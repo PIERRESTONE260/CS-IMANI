@@ -1,136 +1,156 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complexe Scolaire Imani</title>
-    <!-- Icône pour iPhone -->
-    <link rel="apple-touch-icon" href="logo.svg">
-    <!-- Cache la barre d'adresse Safari -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="CS Imani">
-    <!-- On prépare le lien vers le CSS qu'on fera après -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <!-- Importation d'une police moderne -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Complexe Scolaire Imani</title>
+        <!-- Icône pour iPhone -->
+        <link rel="apple-touch-icon" href="logo.svg">
+        <!-- Cache la barre d'adresse Safari -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="CS Imani">
+        <!-- On prépare le lien vers le CSS qu'on fera après -->
+        <link rel="stylesheet" href="style.css">
+        <link rel="manifest" href="manifest.json">
+        <!-- Importation d'une police moderne -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+            rel="stylesheet">
+    </head>
+    <body>
 
-    <!-- Barre de navigation (Apparence Mobile) -->
-    <nav class="navbar">
-        <div class="logo-container">
-            <img src="logo.svg" alt="Logo CS Imani" class="app-logo">
-            <span>CS IMANI</span>
-        </div>
-
-        <div class="nav-links">
-            <button onclick="showPage('home')">Accueil</button>
-            <button onclick="showPage('enroll')">Inscription</button>
-            <button onclick="showPage('results')">Résultats</button>
-            <button onclick="showPage('contact')">Contact</button>
-        </div>
-    </nav>
-
-    <!-- Conteneur Principal -->
-    <main id="main-content">
-
-        <!-- SECTION 1 : ACCUEIL -->
-        <section id="home" class="page active">
-            <div class="hero">
-                <img src="logo.svg" class="hero-logo" alt="Logo">
-                <h1>Complexe Scolaire Imani</h1>
-                <p>L'excellence éducative au service de l'avenir.</p>
+        <!-- Barre de navigation (Apparence Mobile) -->
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="logo.svg" alt="Logo CS Imani" class="app-logo">
+                <span>CS IMANI</span>
             </div>
-            <div class="content-padding">
-                <h2>À propos de nous</h2>
-                <p>Le Complexe Scolaire Imani est dédié à la formation d'une élite intellectuelle et morale. Nous offrons un cadre d'apprentissage moderne et sécurisé.</p>
-                <ul>
-                    <li>Enseignement de qualité</li>
-                    <li>Discipline et Valeurs</li>
-                    <li>Activités parascolaires</li>
-                </ul>
-            </div>
-        </section>
 
-        <!-- SECTION 2 : INSCRIPTION & PAIEMENT -->
-        <section id="enroll" class="page">
-            <div class="content-padding">
-                <h2>Inscription</h2>
-                <div class="payment-box">
-                    <h3>Procédure de Paiement</h3>
-                    <p>Les frais d'inscription s'élèvent à <strong>50$</strong>.</p>
-                    <p>Payez via Mobile Money (M-Pesa / Orange Money) au numéro : <strong>+243 820 000 000</strong>.</p>
-                    <p>Une fois le paiement effectué, notez le <strong>numéro de transaction</strong> et remplissez le formulaire ci-dessous.</p>
+            <div class="nav-links">
+                <button onclick="showPage('home')">Accueil</button>
+                <button onclick="showPage('enroll')">Inscription</button>
+                <button onclick="showPage('results')">Résultats</button>
+                <button onclick="showPage('contact')">Contact</button>
+            </div>
+        </nav>
+
+        <!-- Conteneur Principal -->
+        <main id="main-content">
+
+            <!-- SECTION 1 : ACCUEIL -->
+            <section id="home" class="page active">
+                <div class="hero">
+                    <img src="logo.svg" class="hero-logo" alt="Logo">
+                    <h1>Complexe Scolaire Imani</h1>
+                    <p>L'excellence éducative au service de l'avenir.</p>
                 </div>
-
-                <form id="enrollmentForm">
-                    <label>Nom complet de l'élève</label>
-                    <input type="text" id="nomEleve" required placeholder="Ex: Jean Mukendi">
-
-                    <label>Option souhaitée</label>
-                    <select id="option" required>
-                        <option value="">-- Choisir une option --</option>
-                        <option value="Biochemie">Biologie-Chimie</option>
-                        <option value="Math-Physique">Math-Physique</option>
-                        <option value="Commerciale">Commerciale et Gestion</option>
-                        <option value="Pedagogie">Pédagogie Générale</option>
-                    </select>
-
-                    <label>Classe</label>
-                    <input type="text" id="classe" required placeholder="Ex: 1ère Secondaire">
-
-                    <label>Nom du Parent/Tuteur</label>
-                    <input type="text" id="nomParent" required placeholder="Ex: Papa Mukendi">
-
-                    <label>Téléphone du Parent</label>
-                    <input type="tel" id="telephone" required placeholder="Ex: 082XXXXXXX">
-
-                    <label>ID de Transaction de Paiement</label>
-                    <input type="text" id="idPaiement" required placeholder="Ex: TXN123456789">
-
-                    <button type="submit" class="btn-submit">Envoyer l'inscription</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- SECTION 3 : RÉSULTATS (Dynamique) -->
-        <section id="results" class="page">
-            <div class="content-padding">
-                <h2>Résultats des Examens</h2>
-                <p>Entrez l'identifiant de l'élève pour voir ses performances.</p>
-                <div class="search-area">
-                    <input type="text" id="searchId" placeholder="Ex: IMANI-2024">
-                    <button onclick="verifierResultats()">Chercher</button>
+                <div class="content-padding">
+                    <h2>À propos de nous</h2>
+                    <p>Le Complexe Scolaire Imani est dédié à la formation d'une
+                        élite intellectuelle et morale. Nous offrons un cadre
+                        d'apprentissage moderne et sécurisé.</p>
+                    <ul>
+                        <li>Enseignement de qualité</li>
+                        <li>Discipline et Valeurs</li>
+                        <li>Activités parascolaires</li>
+                    </ul>
                 </div>
+            </section>
 
-                <!-- Zone d'affichage des résultats avec animation -->
-                <div id="resultBox" class="result-display hidden">
-                    <h3 id="resNom">--</h3>
-                    <div class="progress-container">
-                        <div id="progressBar">0%</div>
+            <!-- SECTION 2 : INSCRIPTION & PAIEMENT -->
+            <section id="enroll" class="page">
+                <div class="content-padding">
+                    <h2>Inscription</h2>
+                    <div class="payment-box">
+                        <h3>Procédure de Paiement</h3>
+                        <p>Les frais d'inscription s'élèvent à
+                            <strong>50$</strong>.</p>
+                        <p>Payez via Mobile Money (M-Pesa / Orange Money) au
+                            numéro : <strong>+243 820 000 000</strong>.</p>
+                        <p>Une fois le paiement effectué, notez le
+                            <strong>numéro de transaction</strong> et remplissez
+                            le formulaire ci-dessous.</p>
                     </div>
-                    <p id="resMention">Mention : --</p>
+
+                    <form id="enrollmentForm">
+                        <label>Nom complet de l'élève</label>
+                        <input type="text" id="nomEleve" required
+                            placeholder="Ex: Jean Mukendi">
+
+                        <label>Option souhaitée</label>
+                        <select id="option" required>
+                            <option value>-- Choisir une option --</option>
+                            <option value="LITT">LITT</option>
+                            <option value="HP">HP</option>
+                            <option value="CG">CG</option>
+                            <option value="ELEC">ELEC</option>
+                            <option value="MEG">MEG</option>
+                            <option value="SCIENCE">SCIENCE</option>
+                        </select>
+
+                        <label>Classe</label>
+                        <input type="text" id="classe" required
+                            placeholder="Ex: 1ère Secondaire">
+
+                        <label>Nom du Parent/Tuteur</label>
+                        <input type="text" id="nomParent" required
+                            placeholder="Ex: Papa Mukendi">
+
+                        <label>Téléphone du Parent</label>
+                        <input type="tel" id="telephone" required
+                            placeholder="Ex: 082XXXXXXX">
+
+                        <label>ID de Transaction de Paiement</label>
+                        <input type="text" id="idPaiement" required
+                            placeholder="Ex: TXN123456789">
+
+                        <button type="submit" class="btn-submit">Envoyer
+                            l'inscription</button>
+                    </form>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SECTION 4 : CONTACT -->
-        <section id="contact" class="page">
-            <div class="content-padding">
-                <h2>Contactez-nous</h2>
-                <div class="contact-card">
-                    <p>📍 Adresse : Avenue de la Paix, Lubumbashi</p>
-                    <p>📞 Téléphone : +243 812 345 678</p>
-                    <p>📧 Email : contact@csimani.com</p>
+            <!-- SECTION 3 : RÉSULTATS (Dynamique) -->
+            <section id="results" class="page">
+                <div class="content-padding">
+                    <h2>Résultats des Examens</h2>
+                    <p>Entrez l'identifiant de l'élève pour voir ses
+                        performances.</p>
+                    <div class="search-area">
+                        <input type="text" id="searchId"
+                            placeholder="Ex: IMANI-2024">
+                        <button type="button"
+                            onclick="verifierResultats()">🔎</button>
+                    </div>
+
+                    <!-- Zone d'affichage des résultats avec animation -->
+                    <div id="resultBox" class="result-display hidden">
+                        <h3 id="resNom">--</h3>
+                        <div class="progress-container">
+                            <div id="progressBar">0%</div>
+                        </div>
+                        <p id="resMention">Mention : --</p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-    </main>
+            <!-- SECTION 4 : CONTACT -->
+            <section id="contact" class="page">
+                <div class="content-padding">
+                    <h2>Contactez-nous</h2>
+                    <div class="contact-card">
+                        <p>📍 Adresse : Avenue de la Paix, Lubumbashi</p>
+                        <p>📞 Téléphone : +243 812 345 678</p>
+                        <p>📧 Email : cs-imani@gmail.com</p>
+                    </div>
+                </div>
+            </section>
 
-    <!-- On prépare le lien vers le JavaScript qu'on fera après -->
-    <script src="script.js"></script>
-</body>
+        </main>
+
+        <!-- On prépare le lien vers le JavaScript qu'on fera après -->
+        <script src="script.js"></script>
+    </body>
 </html>
