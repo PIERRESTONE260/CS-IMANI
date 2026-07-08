@@ -1,0 +1,17 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond du bouclier -->
+  <path d="M100 20 L40 50 V110 C40 150 100 180 100 180 C100 180 160 150 160 110 V50 L100 20Z" 
+        fill="#1a3a5f" stroke="#f39c12" stroke-width="5"/>
+  
+  <!-- Livre ouvert -->
+  <path d="M70 120 C70 120 85 115 100 120 C115 115 130 120 130 120 V85 C130 85 115 80 100 85 C85 80 70 85 70 85 V120" 
+        fill="white" />
+  <line x1="100" y1="85" x2="100" y2="120" stroke="#1a3a5f" stroke-width="2"/>
+
+  <!-- Étoile ou Lumière d'Imani -->
+  <polygon points="100,45 105,60 120,60 108,70 112,85 100,75 88,85 92,70 80,60 95,60" 
+           fill="#f39c12" />
+
+  <!-- Texte circulaire ou stylisé -->
+  <text x="100" y="160" font-family="Poppins, Arial" font-size="14" fill="white" text-anchor="middle" font-weight="bold">IMANI</text>
+</svg>

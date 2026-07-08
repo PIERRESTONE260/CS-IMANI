@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveaux Admis - CS Imani</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/admis.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-area"><img src="logo.svg" class="logo-img"><span>CS IMANI</span></div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="actualites.html">Actualités</a></li>
+                <li><a href="inscription.html">Inscription</a></li>
+                <li><a href="admis.html" class="active">Nouveaux Admis</a></li>
+                <li><a href="resultats.html">Résultats</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Liste des Nouveaux Admis (2024-2025)</h2>
+        <p class="subtitle">Félicitations aux nouveaux élèves qui rejoignent notre institution.</p>
+
+        <div class="search-bar">
+            <input type="text" id="filterAdmis" placeholder="Chercher un nom..." onkeyup="filterNames()">
+        </div>
+
+        <div class="table-container">
+            <table id="admisTable">
+                <thead>
+                    <tr>
+                        <th>Nom de l'élève</th>
+                        <th>Option</th>
+                        <th>Classe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MUKENDI Jean</td>
+                        <td>Bio-Chimie</td>
+                        <td>1ère Sec.</td>
+                    </tr>
+                    <tr>
+                        <td>KABANGE Sarah</td>
+                        <td>Math-Physique</td>
+                        <td>3ème Sec.</td>
+                    </tr>
+                    <tr>
+                        <td>ILUNGA Marc</td>
+                        <td>Commerciale</td>
+                        <td>1ère Sec.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/navigation.js"></script>
+    <script>
+        // Petite fonction senior pour filtrer la liste instantanément
+        function filterNames() {
+            let input = document.getElementById('filterAdmis').value.toUpperCase();
+            let rows = document.querySelectorAll('#admisTable tbody tr');
+            
+            rows.forEach(row => {
+                let text = row.cells[0].textContent.toUpperCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+    </script>
+</body>
+</html>

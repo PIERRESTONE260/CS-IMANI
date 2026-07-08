@@ -1,0 +1,66 @@
+.subtitle {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+/* Optimisation du tableau pour mobile */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Permet de glisser si le nom est trop long */
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px; /* Force un minimum pour la lisibilité */
+}
+
+th {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: left;
+    padding: 15px;
+    font-size: 0.9rem;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Badge pour les options (optionnel pour le style) */
+td:nth-child(2) {
+    font-weight: 600;
+    color: var(--primary);
+}

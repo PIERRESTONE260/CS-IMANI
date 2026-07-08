@@ -1,0 +1,46 @@
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.search-box input { flex: 2; }
+.search-box button {
+    flex: 1;
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.result-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    border-radius: 15px;
+    height: 25px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+#progressFill {
+    background: linear-gradient(90deg, var(--accent), #f1c40f);
+    width: 0%;
+    height: 100%;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: width 1.5s cubic-bezier(0.1, 0.8, 0.1, 1);
+}
+
+.hidden { display: none; }

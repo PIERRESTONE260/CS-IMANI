@@ -1,0 +1,118 @@
+:root {
+    --primary: #1a3a5f;      /* Bleu Marine Institutionnel */
+    --accent: #f39c12;       /* Or / Jaune Excellence */
+    --light: #f8f9fa;
+    --dark: #2c3e50;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light);
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* NAVBAR & HAMBURGER */
+.navbar {
+    background: var(--primary);
+    color: var(--white);
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 70px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 35px;
+    height: 35px;
+}
+
+.nav-links {
+    position: fixed;
+    top: 70px;
+    right: -100%; /* Caché par défaut */
+    width: 80%;
+    height: calc(100vh - 70px);
+    background: var(--primary);
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    transition: var(--transition);
+    list-style: none;
+}
+
+.nav-links.active {
+    right: 0; /* Affiche le menu */
+}
+
+.nav-links li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.nav-links li a.active {
+    color: var(--accent);
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+}
+
+/* BOUTON HAMBURGER ANIMÉ */
+.hamburger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: var(--white);
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+/* Animation X quand ouvert */
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* UTILITAIRES */
+.container { padding: 2rem 1.5rem; }
+.btn-main {
+    background: var(--accent);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}

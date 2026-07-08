@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - CS Imani</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/inscription.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-area"><img src="logo.svg" class="logo-img"><span>CS IMANI</span></div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="actualites.html">Actualités</a></li>
+                <li><a href="inscription.html" class="active">Inscription</a></li>
+                <li><a href="admis.html">Nouveaux Admis</a></li>
+                <li><a href="resultats.html">Résultats</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Processus d'Inscription</h2>
+        
+        <div class="payment-steps">
+            <h3>1. Paiement des Frais</h3>
+            <p>Effectuez le paiement de 50$ via :</p>
+            <ul>
+                <li><strong>M-Pesa :</strong> *122*... (082 000 0000)</li>
+                <li><strong>Orange Money :</strong> *144*... (089 000 0000)</li>
+            </ul>
+            <p class="warning">Gardez précieusement votre ID de transaction.</p>
+        </div>
+
+        <form id="enrollmentForm">
+            <h3>2. Formulaire d'Information</h3>
+            <input type="text" id="nomEleve" placeholder="Nom complet de l'élève" required>
+            <select id="option" required>
+                <option value="">Choisir l'option</option>
+                <option value="Bio-Chimie">Biologie-Chimie</option>
+                <option value="Math-Physique">Math-Physique</option>
+                <option value="Commerciale">Commerciale</option>
+            </select>
+            <input type="text" id="classe" placeholder="Classe (ex: 1ère Sec)" required>
+            <input type="text" id="nomParent" placeholder="Nom du Parent/Tuteur" required>
+            <input type="tel" id="telephone" placeholder="Téléphone du Parent" required>
+            <input type="text" id="idPaiement" placeholder="ID de Transaction" required>
+            
+            <button type="submit" id="btnSubmit">Confirmer l'inscription</button>
+        </form>
+    </main>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/inscription.js"></script> <!-- C'est ici qu'on mettra votre script Google Sheets -->
+</body>
+</html>

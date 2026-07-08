@@ -1,0 +1,30 @@
+.payment-steps {
+    background: #eef5ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 5px solid var(--primary);
+}
+
+.warning { color: #d35400; font-weight: bold; font-size: 0.9rem; margin-top: 10px; }
+
+form { display: flex; flex-direction: column; gap: 15px; }
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+input:focus { border-color: var(--primary); outline: none; }
+
+#btnSubmit {
+    background: var(--primary);
+    color: white;
+    padding: 16px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}

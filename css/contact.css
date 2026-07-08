@@ -1,0 +1,21 @@
+.contact-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.contact-card p { margin-bottom: 15px; }
+hr { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
