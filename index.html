@@ -1,48 +1,197 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - CS Imani</title>
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="manifest" href="manifest.json">
-</head>
-<body>
-    <!-- HEADER COMMUN -->
-    <header>
-        <nav class="navbar">
-            <div class="logo-area">
-                <img src="logo.svg" alt="Logo Imani" class="logo-img">
-                <span>CS IMANI</span>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accueil - CS Banza</title>
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/home.css">
+        <link rel="manifest" href="manifest.json">
+    </head>
+    <body>
+
+        <!-- HEADER COMMUN -->
+        <header>
+            <nav class="navbar">
+                <div class="logo-area">
+                    <img src="favicon.svg" alt="Logo Imani" class="logo-img">
+                    <span>CS BANZA</span>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="inscription.html">Inscription</a></li>
+                    <li><a href="admis.html">Nouveaux Admis</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Section Hero avec Carrousel -->
+            <section class="hero">
+                <div class="hero-carousel">
+                    <img src="img/hero-slide1.png" alt="Vue aérienne de l'école"
+                        class="active">
+                    <img src="img/hero-slide2.png"
+                        alt="Élèves en classe d'informatique">
+                    <img src="img/hero-slide3.png"
+                        alt="Cérémonie de remise de diplômes">
+                </div>
+                <div class="hero-content">
+                    <h1>Bienvenue au Complexe Scolaire Imani</h1>
+                    <p>Façonner les leaders de demain par l'excellence et la
+                        foi.</p>
+                    <a href="inscription.html" class="btn-main">S'inscrire
+                        maintenant</a>
+                </div>
+            </section>
+
+            <!-- Identité -->
+            <section id="mission-devise" class="container">
+                <h2>Notre Identité</h2>
+                <p><strong>Mission :</strong> Offrir une éducation de qualité
+                    supérieure dans un environnement propice à l'épanouissement
+                    intellectuel et moral de chaque enfant.</p>
+                <p><strong>Devise :</strong> Travail - Discipline - Réussite</p>
+            </section>
+
+            <!-- Galerie Riche -->
+            <section id="galerie" class="container">
+                <h2>Découvrez CS BANZA</h2>
+                <p class="section-subtitle">Un environnement propice à
+                    l'épanouissement et à la réussite.</p>
+                <div class="photo-grid">
+                    <figure><img src="img/galerie_facade.png"
+                            alt="Façade principale"><figcaption>Notre
+                            établissement</figcaption></figure>
+                    <figure><img src="img/galerie_classe.png"
+                            alt="Salle de classe"><figcaption>Salles
+                            équipées</figcaption></figure>
+                    <figure><img src="img/galerie_ceremonie.png"
+                            alt="Cérémonie"><figcaption>Rassemblement</figcaption></figure>
+                    <figure><img src="img/galerie_labo.png"
+                            alt="Laboratoire"><figcaption>Labo
+                            informatique</figcaption></figure>
+                    <figure><img src="img/galerie_sport.jpg"
+                            alt="Sport"><figcaption>Infrastructures</figcaption></figure>
+                    <figure><img src="img/galerie_biblio.png"
+                            alt="Bibliothèque"><figcaption>Bibliothèque</figcaption></figure>
+                </div>
+            </section>
+
+            <!-- Documents -->
+            <section id="documents" class="container">
+                <h2>Documents Utiles</h2>
+                <a href="docs/hymne.pdf" class="btn-doc" download>Télécharger
+                    l'Hymne National</a>
+                <a href="docs/reglement.pdf" class="btn-doc"
+                    download>Télécharger le Règlement Intérieur</a>
+                <a href="docs/guide.pdf" class="btn-doc" download>Télécharger le
+                    Guide des Uniformes</a>
+                <a href="docs/calendrier.pdf" class="btn-doc"
+                    download>Télécharger le Calendrier Scolaire 2026 & 2027</a>
+            </section>
+
+            <!-- Trousseaux -->
+            <section id="trousseaux" class="container">
+                <h2>Trousseaux Scolaires</h2>
+                <select id="classe-select">
+                    <option value>Sélectionnez votre classe</option>
+                    <optgroup label="Maternelle">
+                        <option value="mat1">1ère Maternelle</option>
+                        <option value="mat2">2ème Maternelle</option>
+                        <option value="mat3">3ème Maternelle</option>
+                    </optgroup>
+                    <optgroup label="Primaire">
+                        <option value="pri1">1ère Primaire</option>
+                        <option value="pri2">2ème Primaire</option>
+                        <option value="pri3">3ème Primaire</option>
+                        <option value="pri4">4ème Primaire</option>
+                        <option value="pri5">5ème Primaire</option>
+                        <option value="pri6">6ème Primaire</option>
+                    </optgroup>
+                    <optgroup label="Secondaire">
+                        <option value="sec1">1ère Secondaire</option>
+                        <option value="sec2">2ème Secondaire</option>
+                        <option value="sec3">3ème Secondaire</option>
+                        <option value="sec4">4ème Secondaire</option>
+                    </optgroup>
+                </select>
+                <div id="option-container" style="display:none;">
+                    <label>Choisir l'option :</label>
+                    <select id="option-select">
+                        <option value="CG">CG</option>
+                        <option value="ELEC">ELEC</option>
+                        <option value="TCC">TCC</option>
+                        <option value="SCIENCE">SCIENCE</option>
+                        <option value="LITT">LITT</option>
+                        <option value="HP">HP</option>
+                        <option value="MG">MG</option>
+                    </select>
+                </div>
+                <button id="btn-telecharger" class="btn-main">Télécharger le
+                    Trousseau</button>
+            </section>
+
+            <!-- Administration -->
+            <section id="admin" class="container">
+                <h2>Administration</h2>
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <img src="img/admin1.jpg" alt="Directeur">
+                        <h3>Jean Dupont</h3>
+                        <p>Directeur Général</p>
+                        <small>Expert en éducation, 20 ans d'expérience.</small>
+                    </div>
+                    <div class="admin-card">
+                        <img src="img/admin2.png" alt="Préfet">
+                        <h3>Paul Ilunga</h3>
+                        <p>Préfèt des études</p>
+                        <small>Licenciée en Sciences de l'éducation.</small>
+                    </div>
+                    <div class="admin-card">
+                        <img src="img/admin3.png" alt="Secrétaire">
+                        <h3>Marie Kabeya</h3>
+                        <p>Secrétaire Administratif</p>
+                        <small>Gestionnaire de systèmes scolaires.</small>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Complet -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>CS BANZA</h4>
+                    <p>Travail-Discipline-Réussite.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="inscription.html">Inscription</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resultats.html">Résultats</a></li>
+                        <li><a href="admis.html">Nouveaux Admis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>Lubumbashi, RDC</p>
+                    <p>Email: 26IMANI@csimani.cd</p>
+                </div>
             </div>
-            <button class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html" class="active">Accueil</a></li>
-                <li><a href="actualites.html">Actualités</a></li>
-                <li><a href="inscription.html">Inscription</a></li>
-                <li><a href="admis.html">Nouveaux Admis</a></li>
-                <li><a href="resultats.html">Résultats</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CS BANZA.</p>
+            </div>
+        </footer>
 
-    <main>
-        <section class="hero">
-            <h1>Bienvenue au Complexe Scolaire Imani</h1>
-            <p>Façonner les leaders de demain par l'excellence et la foi.</p>
-            <a href="inscription.html" class="btn-main">S'inscrire maintenant</a>
-        </section>
-
-        <section class="quick-info">
-            <h2>Notre Mission</h2>
-            <p>Offrir une éducation de qualité supérieure dans un environnement propice à l'épanouissement intellectuel et moral de chaque enfant.</p>
-        </section>
-    </main>
-
-    <script src="js/navigation.js"></script>
-</body>
+        <script src="js/navigation.js"></script>
+        <script src="js/trousseau.js"></script>
+    </body>
 </html>

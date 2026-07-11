@@ -2,9 +2,26 @@ const CACHE_NAME = 'imani-v1';
 const ASSETS = [
   '/',
   '/index.html',
-  '/style.css',
-  '/script.js',
+  '/admis.html',
+  '/actualites.html',
+  '/contact.html',
+  '/inscription.html',
+  '/resultats.html',
+  '/global.css',
+  '/home.css',
+  '/actuelites.css',
+  '/contact.css',
+  '/inscription.css',
+  '/resultats.css',
+  '/admis.css',
+  '/navigation.js',
+  '/inscription.js',
+  '/resultats.js',
+  '/admis.js',
+  '/actualites.js',
+  '/trousseau.js',
   '/logo.svg',
+  '/favicon.svg',
   '/manifest.json'
 ];
 

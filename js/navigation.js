@@ -15,6 +15,21 @@ document.addEventListener('DOMContentLoaded', () => {
             hamburger.classList.remove('open');
         }
     });
+
+    // --- NOUVEL AJOUT : Logique du Carrousel ---
+    const slides = document.querySelectorAll('.hero-carousel img');
+    let currentSlide = 0;
+
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Change d'image toutes les 4 secondes
+    if (slides.length > 0) {
+        setInterval(nextSlide, 4000);
+    }
 });
 
 // Enregistrement du Service Worker pour le mode "Application Installable"
