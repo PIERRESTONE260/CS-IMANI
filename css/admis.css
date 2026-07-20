@@ -64,3 +64,36 @@ td:nth-child(2) {
     font-weight: 600;
     color: var(--primary);
 }
+
+/* --- AJOUTS POUR MOBILE --- */
+
+@media screen and (max-width: 600px) {
+    /* Réduit la taille de la police pour gagner de la place */
+    table {
+        font-size: 0.8rem;
+    }
+
+    th, td {
+        padding: 10px 5px; /* Réduit le padding pour éviter que le texte ne sature l'écran */
+    }
+
+    .container {
+        padding: 10px; /* Moins de marge sur les côtés sur mobile */
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Optionnel : permet d'avoir un effet "carte" si nécessaire */
+    .table-container {
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+}
+
+/* S'assure que le champ de recherche ne dépasse pas sur mobile */
+.search-bar input {
+    width: 100%;
+    box-sizing: border-box; /* Important pour que le padding n'agrandisse pas l'input */
+}

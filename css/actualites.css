@@ -50,3 +50,35 @@
     font-weight: 600;
     font-size: 0.9rem;
 }
+
+/* Style des images dans les cartes */
+.news-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* Garantit que l'image ne se déforme pas */
+    border-radius: 10px 10px 0 0;
+}
+
+/* Style de la fenêtre modale (lecture complète) */
+.modal {
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 15px;
+}
+
+.close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 2rem;
+}

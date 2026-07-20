@@ -1,7 +1,7 @@
 {
-  "name": "Complexe Scolaire Imani",
-  "short_name": "Imani",
-  "description": "Application officielle du Complexe Scolaire Imani",
+  "name": "Complexe Scolaire Banza",
+  "short_name": "Banza",
+  "description": "Application officielle du Complexe Scolaire Banza",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#1a3a5f",

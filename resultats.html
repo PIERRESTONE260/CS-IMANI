@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Résultats - CS Banza</title>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/resultats.css">
 </head>
@@ -25,20 +26,54 @@
 
     <main class="container">
         <h2>Consulter les résultats</h2>
-        <div class="search-box">
-            <input type="text" id="studentID" placeholder="Ex: IMANI-2024-001">
-            <button onclick="checkResults()">Rechercher</button>
+        
+        <!-- Zone de Connexion Sécurisée -->
+        <div id="loginBox" class="search-box">
+            <input type="text" id="studentID" placeholder="Votre Matricule (ex: 10NW101BN)">
+            <input type="password" id="studentPass" placeholder="Mot de passe">
+            <button onclick="checkResults()">Accéder au Bulletin</button>
         </div>
 
+        <!-- Bulletin Scolaire (Initialement caché) -->
         <div id="resultDisplay" class="result-card hidden">
             <h3 id="displayNom">--</h3>
+            <p><strong>Classe :</strong> <span id="displayClasse">--</span></p>
             <div class="progress-bar">
                 <div id="progressFill">0%</div>
             </div>
             <p id="displayMention">--</p>
+            <div id="notesDetails" style="margin-top: 20px; text-align: left;">
+                <!-- Les notes seront injectées ici par JavaScript via Google Sheets -->
+            </div>
         </div>
     </main>
 
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>CS BANZA</h4>
+                <p>Travail-Discipline-Réussite.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="inscription.html">Inscription</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="admis.html">Nouveaux Admis</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Lubumbashi, RDC</p>
+                <p>Email:26BANZA@csbanza.cd</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CS BANZA.</p>
+        </div>
+    </footer>
+        
     <script src="js/navigation.js"></script>
     <script src="js/resultats.js"></script>
 </body>

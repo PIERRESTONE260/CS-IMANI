@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inscription - CS Banza</title>
+        <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
         <link rel="stylesheet" href="css/global.css">
         <link rel="stylesheet" href="css/inscription.css">
     </head>
@@ -47,12 +48,33 @@
                     placeholder="Nom complet de l'élève" required>
                 <select id="option" required>
                     <option value>Choisir l'option</option>
-                    <option value="Bio-Chimie">Biologie-Chimie</option>
-                    <option value="Math-Physique">Math-Physique</option>
-                    <option value="Commerciale">Commerciale</option>
+                    <option value="CG">CG</option>
+                    <option value="HP">HP</option>
+                    <option value="SCIENCE">SCIENCE</option>
+                    <option value="LITT">LITT</option>
+                    <option value="ELEC">ELEC</option>
+                    <option value="TCC">TCC</option>
+                    <option value="MG">MG</option>
+                    <option value="MA">MA</option>
                 </select>
-                <input type="text" id="classe"
-                    placeholder="Classe (ex: 1ère Sec)" required>
+                <select id="classe" required>
+                    <option value>Choisir la classe</option>
+                    <option value="1ère mat">1ère maternelle</option>
+                    <option value="2ème mat">2ème maternelle</option>
+                    <option value="3ème mat">3ème maternelle</option>
+                    <option value="1ère prim">1ère primaire</option>
+                    <option value="2ème prim">2ème primaire</option>
+                    <option value="3ème prim">3ème primaire</option>
+                    <option value="4ème prim">4ème primaire</option>
+                    <option value="5ème prim">5ème primaire</option>
+                    <option value="6ème prim">6ème primaire</option>
+                    <option value="7ème EB">7ème étude de base</option>
+                    <option value="8ème EB">8ème étude de base</option>
+                    <option value="1ère Sec">1ère Sécondaire</option>
+                    <option value="2ème Sec">2ème Sécondaire</option>
+                    <option value="3ème Sec">3ème Sécondaire</option>
+                    <option value="4ème Sec">4ème Sécondaire</option>
+                </select>
                 <input type="text" id="nomParent"
                     placeholder="Nom du Parent/Tuteur" required>
                 <input type="tel" id="telephone"
@@ -65,6 +87,33 @@
             </form>
         </main>
 
+        <!-- Footer Complet -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>CS BANZA</h4>
+                    <p>Travail-Discipline-Réussite.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="inscription.html">Inscription</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resultats.html">Résultats</a></li>
+                        <li><a href="admis.html">Nouveaux Admis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>Lubumbashi, RDC</p>
+                    <p>Email:26BANZA@csbanza.cd</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CS BANZA.</p>
+            </div>
+        </footer>
+        
         <script src="js/navigation.js"></script>
         <script src="js/inscription.js"></script>
         <!-- C'est ici qu'on mettra votre script Google Sheets -->

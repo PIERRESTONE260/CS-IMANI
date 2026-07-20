@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // Collez l'URL ici
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzEmfk3dUB8VS-xZu-rzvBHSMhO3Q2xHiziF49omT-CjxoYjSjX_vlrVtNENnRtfzyd/exec"; // Collez l'URL ici
 
 document.getElementById('enrollmentForm').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ document.getElementById('enrollmentForm').addEventListener('submit', async (e) =
             body: JSON.stringify(data)
         });
 
-        alert("Inscription envoyée avec succès à CS IMANI !");
+        alert("Inscription envoyée avec succès à CS BANZA !");
         e.target.reset();
     } catch (error) {
         alert("Erreur réseau. Vérifiez votre connexion.");

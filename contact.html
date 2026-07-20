@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - CS Banza</title>
+    <title>Contact & À propos - CS Banza</title>
+    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/contact.css">
 </head>
@@ -18,22 +19,77 @@
                 <li><a href="inscription.html">Inscription</a></li>
                 <li><a href="admis.html">Nouveaux Admis</a></li>
                 <li><a href="resultats.html">Résultats</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact & À propos</a></li>
             </ul>
         </nav>
     </header>
 
     <main class="container">
+        <!-- NOUVELLE SECTION : À propos de l'école & Promoteurs -->
+        <section class="about-section" style="margin-bottom: 40px; background: var(--white); padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+            <h2 style="color: var(--primary-color, #1a3a5f); border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">À propos du Complexe Scolaire BANZA</h2>
+            <p style="line-height: 1.6; margin-bottom: 15px;">
+                Le <strong>Complexe Scolaire BANZA (CS BANZA)</strong> est un établissement d'enseignement de référence situé à Lubumbashi, engagé dans la quête permanente de l'excellence académique et de l'intégrité morale. Fidèle à notre devise <em>« Travail - Discipline - Réussite »</em>, nous formons la jeunesse depuis la base jusqu'aux cycles secondaires avec des programmes rigoureux et adaptés aux exigences du monde moderne.
+            </p>
+
+            <!-- Bloc Image des Promoteurs -->
+            <div class="promoteurs-container" style="text-align: center; margin: 25px 0; padding: 20px; background: #f8f9fa; border-radius: 10px; border: 1px dashed #cbd5e1;">
+                <img src="img/promoteur.png" alt="Les Promoteurs du CS BANZA" style="max-width: 100%; height: auto; border-radius: 8px; max-height: 350px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                <p style="margin-top: 10px; font-style: italic; color: #64748b; font-size: 0.95rem;">La Direction et les Promoteurs du CS BANZA</p>
+            </div>
+
+            <p style="line-height: 1.6; margin-bottom: 15px;">
+                Notre institution couvre un parcours complet pour accompagner chaque élève dans son épanouissement :
+            </p>
+            <ul style="line-height: 1.6; margin-bottom: 15px; padding-left: 20px;">
+                <li><strong>La Maternelle :</strong> Un cadre d'éveil chaleureux et stimulant pour les tout-petits.</li>
+                <li><strong>Le Primaire :</strong> L'acquisition solide des fondements de la lecture, de l'écriture et du calcul.</li>
+                <li><strong>Le Secondaire Général :</strong> Des classes d'orientation (7ème et 8ème années) pour structurer les compétences des collégiens.</li>
+                <li><strong>Les Humanités (Secondaire avec Options) :</strong> Des filières spécialisées de la 1ère à la 4ème secondaire (telles que Commerciale, Littéraire, Scientifique, Technique, etc.) conçues pour préparer directement les élèves aux études supérieures ou au marché du travail.</li>
+            </ul>
+            <p style="line-height: 1.6;">
+                Grâce à un corps professoral qualifié, un encadrement strict et des infrastructures numériques innovantes (suivi en ligne, gestion moderne des dossiers et bulletins), le CS BANZA offre à chaque élève toutes les clés pour bâtir un avenir brillant et devenir un citoyen responsable.
+            </p>
+        </section>
+
+        <!-- Section Contact originale conservée -->
         <h2>Nous Contacter</h2>
         <div class="contact-card">
             <p><strong>📍 Adresse :</strong> Avenue de la Paix, Q/Lido, Lubumbashi</p>
-            <p><strong>📞 Téléphone :</strong> +243 820 000 000</p>
-            <p><strong>📧 Email :</strong> info@csimani.com</p>
+            <p><strong>📞 Téléphone :</strong> +243 992 846 700</p>
+            <p><strong>📧 Email :</strong> 26BANZA@csbanza.cd</p>
             <hr>
-            <a href="https://wa.me/243820000000" class="btn-whatsapp">Nous écrire sur WhatsApp</a>
+            <a href="https://wa.me/243855930537" class="btn-whatsapp">Nous écrire sur WhatsApp</a>
         </div>
     </main>
 
+    <!-- Footer Complet -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>CS BANZA</h4>
+                <p>Travail-Discipline-Réussite.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="inscription.html">Inscription</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="admis.html">Nouveaux Admis</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Lubumbashi, RDC</p>
+                <p>Email:26BANZA@csbanza.cd</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CS BANZA.</p>
+        </div>
+    </footer>
+        
     <script src="js/navigation.js"></script>
 </body>
 </html>

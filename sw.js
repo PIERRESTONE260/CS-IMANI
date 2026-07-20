@@ -1,4 +1,4 @@
-const CACHE_NAME = 'imani-v1';
+const CACHE_NAME = 'banza-v1';
 const ASSETS = [
   '/',
   '/index.html',

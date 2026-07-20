@@ -19,3 +19,80 @@ hr { border: none; border-top: 1px solid #eee; margin: 20px 0; }
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
 }
+
+/* --- Styles pour la section À propos --- */
+.about-section {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 40px;
+}
+
+.about-section h2 {
+    color: var(--primary-color, #1a3a5f);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.about-section p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.about-section ul {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    padding-left: 20px;
+    color: #444;
+}
+
+.about-section li {
+    margin-bottom: 8px;
+}
+
+/* --- Style pour le bloc des promoteurs --- */
+.promoteurs-container {
+    text-align: center;
+    margin: 25px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px dashed #cbd5e1;
+}
+
+.promoteurs-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-height: 350px;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.promoteurs-container p {
+    margin-top: 10px;
+    font-style: italic;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+/* --- Adaptation Responsive pour Mobile --- */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .promoteurs-container {
+        padding: 15px;
+        margin: 15px 0;
+    }
+}

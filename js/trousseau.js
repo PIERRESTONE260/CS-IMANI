@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'pri4': 'trousseau_4em_primaire',
             'pri5': 'trousseau_5em_primaire',
             'pri6': 'trousseau_6em_primaire',
+            'eb7': 'trousseau_7em_eb',
+            'eb8': 'trousseau_8em_eb',
             'sec1': `trousseau_1er_secondaire_${option}`,
             'sec2': `trousseau_2em_secondaire_${option}`,
             'sec3': `trousseau_3em_secondaire_${option}`,
