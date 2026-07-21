@@ -6,6 +6,8 @@
 
 .search-bar {
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .search-bar input {
@@ -15,6 +17,7 @@
     border-radius: 10px;
     font-size: 1rem;
     transition: border-color 0.3s;
+    box-sizing: border-box; /* Empêche l'input de dépasser de l'écran */
 }
 
 .search-bar input:focus {
@@ -22,33 +25,39 @@
     outline: none;
 }
 
-/* Optimisation du tableau pour mobile */
+/* --- OPTIMISATION DU TABLEAU SANS SCROLL HORIZONTAL --- */
 .table-container {
     width: 100%;
-    overflow-x: auto; /* Permet de glisser si le nom est trop long */
+    overflow-x: hidden; /* Supprime totalement le scroll horizontal gauche/droite */
     background: var(--white);
     border-radius: 15px;
     box-shadow: var(--shadow);
+    box-sizing: border-box;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 400px; /* Force un minimum pour la lisibilité */
+    table-layout: fixed; /* Force le tableau à se répartir strictement dans l'écran */
+}
+
+th, td {
+    padding: 12px 8px; /* Padding réduit et équilibré pour mobile */
+    font-size: 0.85rem;
+    text-align: left;
+    word-wrap: break-word; /* Coupe proprement les mots trop longs pour éviter le débordement */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 th {
     background-color: var(--primary);
     color: var(--white);
-    text-align: left;
-    padding: 15px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 td {
-    padding: 15px;
     border-bottom: 1px solid #eee;
-    font-size: 0.9rem;
 }
 
 tr:nth-child(even) {
@@ -59,41 +68,33 @@ tr:last-child td {
     border-bottom: none;
 }
 
-/* Badge pour les options (optionnel pour le style) */
+/* Badge pour les options */
 td:nth-child(2) {
     font-weight: 600;
     color: var(--primary);
 }
 
 /* --- AJOUTS POUR MOBILE --- */
-
 @media screen and (max-width: 600px) {
-    /* Réduit la taille de la police pour gagner de la place */
+    /* Ajustements stricts pour petits écrans */
     table {
-        font-size: 0.8rem;
+        font-size: 0.75rem; /* Police optimisée pour tout faire tenir */
     }
 
     th, td {
-        padding: 10px 5px; /* Réduit le padding pour éviter que le texte ne sature l'écran */
+        padding: 10px 4px; /* Espace serré pour maximiser l'espace horizontal */
     }
 
     .container {
-        padding: 10px; /* Moins de marge sur les côtés sur mobile */
+        padding: 5px; /* Réduit l'espace vide autour de la page */
     }
 
     h2 {
         font-size: 1.2rem;
     }
 
-    /* Optionnel : permet d'avoir un effet "carte" si nécessaire */
     .table-container {
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-}
-
-/* S'assure que le champ de recherche ne dépasse pas sur mobile */
-.search-bar input {
-    width: 100%;
-    box-sizing: border-box; /* Important pour que le padding n'agrandisse pas l'input */
 }

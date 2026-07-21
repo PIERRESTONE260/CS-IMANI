@@ -1,56 +1,59 @@
+/* --- GRILLE DES ACTUALITÉS (2 COLONNES SUR MOBILE) --- */
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    /* Force l'affichage en 2 colonnes égales sur mobile et s'adapte sur PC */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
     margin-top: 20px;
 }
 
 .news-card {
     background: var(--white);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 12px;
     box-shadow: var(--shadow);
-    border-top: 5px solid var(--accent);
+    border-top: 4px solid var(--accent);
     transition: transform 0.2s;
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Empêche les éléments de dépasser des bords arrondis */
+    overflow: hidden; 
 }
 
 .news-card:active {
     transform: scale(0.98);
 }
 
-/* Style des images dans les cartes (corrigé pour s'intégrer parfaitement avec le padding) */
+/* Style des images dans les cartes adapté pour un affichage en 2 colonnes */
 .news-img {
-    width: calc(100% + 40px); /* Compense le padding du parent */
-    height: 160px;
+    width: calc(100% + 24px); /* Compense le padding réduit du parent sur mobile */
+    height: 110px; /* Hauteur compacte pour mobile */
     object-fit: cover; 
-    margin: -20px -20px 15px -20px; /* Vient coller l'image proprement en haut de la carte */
+    margin: -12px -12px 10px -12px; 
 }
 
 .news-date {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #7f8c8d;
     font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     display: block;
 }
 
 .news-card h3 {
     color: var(--primary);
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    line-height: 1.2;
 }
 
 .news-card p {
-    font-size: 0.95rem;
+    font-size: 0.82rem;
     color: var(--dark);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limite à 3 lignes de texte */
-    line-clamp: 3; 
+    -webkit-line-clamp: 2; /* Limite à 2 lignes sur mobile pour gagner de la place */
+    line-clamp: 2; 
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -59,8 +62,8 @@
     color: var(--accent);
     text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
-    margin-top: auto; /* Pousse le bouton toujours tout en bas de la carte */
+    font-size: 0.8rem;
+    margin-top: auto; 
 }
 
 /* Style de la fenêtre modale (lecture complète) */
@@ -70,14 +73,14 @@
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.8);
     z-index: 1000;
-    overflow-y: auto; /* Permet de faire défiler si le texte est long sur mobile */
-    padding: 20px;
+    overflow-y: auto; 
+    padding: 15px;
     box-sizing: border-box;
 }
 
 .modal-content {
     background: white;
-    margin: 5% auto;
+    margin: 10% auto;
     padding: 20px;
     width: 100%;
     max-width: 600px;
@@ -92,10 +95,38 @@
     line-height: 1;
 }
 
-/* Ajustement spécifique pour les très petits mobiles */
-@media (max-width: 480px) {
-    .modal-content {
-        margin: 10% auto;
-        padding: 15px;
+/* --- ADAPTATION POUR PC / GRANDS ÉCRANS --- */
+@media (min-width: 769px) {
+    .news-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .news-card {
+        padding: 20px;
+    }
+
+    .news-img {
+        width: calc(100% + 40px);
+        height: 160px;
+        margin: -20px -20px 15px -20px;
+    }
+
+    .news-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .news-card p {
+        font-size: 0.95rem;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+    }
+
+    .news-date {
+        font-size: 0.8rem;
+    }
+
+    .read-more {
+        font-size: 0.9rem;
     }
 }

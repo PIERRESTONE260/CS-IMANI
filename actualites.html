@@ -25,50 +25,59 @@
     </header>
 
     <main class="container">
-        <h2>Dernières Actualités</h2>
-        
-        <!-- Grille des actualités : les éléments seront injectés ici par actualites.js -->
-        <div class="news-grid" id="newsGrid">
-            <!-- Contenu dynamique généré par JavaScript -->
-        </div>
+        <!-- Section des Dernières Actualités (Alimentée par défaut et par le centre de contrôle) -->
+        <section style="margin-bottom: 40px;">
+            <h2>Dernières Actualités</h2>
+            <div class="news-grid" id="newsGrid">
+                <!-- Contenu injecté dynamiquement par JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section des Anciennes Actualités (Archives de plus d'un mois / stockées) -->
+        <section style="margin-bottom: 40px;">
+            <h2 style="border-left-color: #7f8c8d; color: #7f8c8d;">Anciennes Actualités</h2>
+            <div class="news-grid" id="anciennesNewsGrid">
+                <!-- Les actualités plus anciennes s'afficheront ici automatiquement -->
+            </div>
+        </section>
 
         <!-- Modale pour la lecture complète -->
         <div id="modalArticle" class="modal">
             <div class="modal-content">
                 <span class="close-btn" onclick="fermerModal()">&times;</span>
-                <img id="modalImg" src="" alt="Image complète" style="width:100%; border-radius:10px;">
-                <h2 id="modalTitle"></h2>
+                <img id="modalImg" src="" alt="Image complète" style="width:100%; border-radius:10px; max-height: 250px; object-fit: cover;">
+                <h2 id="modalTitle" style="margin-top: 15px;"></h2>
                 <p id="modalFullText"></p>
             </div>
         </div>
     </main>
 
-    <!-- Footer Complet -->
-        <footer class="footer">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>CS BANZA</h4>
-                    <p>Travail-Discipline-Réussite.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="inscription.html">Inscription</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="resultats.html">Résultats</a></li>
-                        <li><a href="admis.html">Nouveaux Admis</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p>Lubumbashi, RDC</p>
-                    <p>Email:26BANZA@csbanza.cd</p>
-                </div>
+    <!-- Footer Complet (en 2 colonnes sur mobile) -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>CS BANZA</h4>
+                <p>Travail-Discipline-Réussite.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 CS BANZA.</p>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="inscription.html">Inscription</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="admis.html">Nouveaux Admis</a></li>
+                </ul>
             </div>
-        </footer>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Lubumbashi, RDC</p>
+                <p>Email:26BANZA@csbanza.cd</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CS BANZA.</p>
+        </div>
+    </footer>
         
     <!-- Scripts nécessaires -->
     <script src="js/navigation.js"></script>

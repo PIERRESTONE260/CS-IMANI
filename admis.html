@@ -29,7 +29,7 @@
         <p class="subtitle">Félicitations aux nouveaux élèves qui rejoignent notre institution.</p>
 
         <div class="search-bar">
-            <input type="text" id="filterAdmis" placeholder="Chercher un nom..." onkeyup="filterNames()">
+            <input type="text" id="filterAdmis" placeholder="Chercher un nom...">
         </div>
 
         <div class="table-container">
@@ -41,7 +41,6 @@
                         <th>Classe</th>
                     </tr>
                 </thead>
-                
                 <tbody id="admisBody">
                     <!-- Les données seront injectées ici par JavaScript -->
                 </tbody>
@@ -50,44 +49,33 @@
     </main>
 
     <!-- Footer Complet -->
-        <footer class="footer">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>CS BANZA</h4>
-                    <p>Travail-Discipline-Réussite.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Navigation</h4>
-                    <ul>
-                        <li><a href="inscription.html">Inscription</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="resultats.html">Résultats</a></li>
-                        <li><a href="admis.html">Nouveaux Admis</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p>Lubumbashi, RDC</p>
-                    <p>Email:26BANZA@csbanza.cd</p>
-                </div>
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>CS BANZA</h4>
+                <p>Travail-Discipline-Réussite.</p>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 CS BANZA.</p>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="inscription.html">Inscription</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="admis.html">Nouveaux Admis</a></li>
+                </ul>
             </div>
-        </footer>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Lubumbashi, RDC</p>
+                <p>Email:26BANZA@csbanza.cd</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 CS BANZA.</p>
+        </div>
+    </footer>
         
     <script src="js/navigation.js"></script>
-    <script>
-        // Petite fonction senior pour filtrer la liste instantanément
-        function filterNames() {
-            let input = document.getElementById('filterAdmis').value.toUpperCase();
-            let rows = document.querySelectorAll('#admisTable tbody tr');
-            
-            rows.forEach(row => {
-                let text = row.cells[0].textContent.toUpperCase();
-                row.style.display = text.includes(input) ? "" : "none";
-            });
-        }
-    </script>
+    <script src="js/admis.js"></script> <!-- L'oubli était ici -->
 </body>
 </html>

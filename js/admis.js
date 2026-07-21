@@ -1,31 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Remplacez par votre lien de publication CSV
+    // Lien de publication CSV de votre Google Sheet reliée aux inscriptions
     const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSnehMzrPtz_JWvIUzyhY93nQC4Lm15gNB3YvMPXXw2zYPVeb04tKeIpCmTbxU5on8-gcY5AOkz_CXf/pub?gid=0&single=true&output=csv";
 
+    const tbody = document.getElementById('admisBody');
+
     fetch(csvUrl)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error("Erreur de chargement du fichier CSV");
+            return response.text();
+        })
         .then(data => {
-            const rows = data.split('\n').slice(1); // On ignore la première ligne (les titres)
-            const tbody = document.getElementById('admisBody');
-            
-            rows.forEach(row => {
-                const cols = row.split(',');
-                if (cols.length >= 3) {
+            // Découpage par ligne et suppression de la première ligne (les en-têtes)
+            const rows = data.split('\n').map(row => row.trim()).filter(row => row.length > 0);
+            const dataRows = rows.slice(1); 
+
+            tbody.innerHTML = ""; // Nettoyage préalable
+
+            if (dataRows.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;">Aucun admis enregistré pour le moment.</td></tr>`;
+                return;
+            }
+
+            dataRows.forEach(row => {
+                // Gestion basique de séparation des colonnes par virgule
+                const cols = row.split(',').map(col => col.replace(/^["'](.*)["']$/, '$1').trim());
+                
+                if (cols.length >= 3 && cols[0] !== "") {
                     const tr = document.createElement('tr');
-                    tr.innerHTML = `<td>${cols[0]}</td><td>${cols[1]}</td><td>${cols[2]}</td>`;
+                    tr.innerHTML = `
+                        <td>${cols[0]}</td>
+                        <td>${cols[1]}</td>
+                        <td>${cols[2]}</td>
+                    `;
                     tbody.appendChild(tr);
                 }
             });
+        })
+        .catch(err => {
+            console.warn("Impossible de récupérer la liste des admis :", err);
+            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; color: red;">Erreur de connexion aux données.</td></tr>`;
         });
 
-    // Fonction de filtrage (reste inchangée)
+    // Fonction de filtrage instantané connectée à l'input
     const filterInput = document.getElementById('filterAdmis');
-    filterInput.addEventListener('keyup', () => {
-        const value = filterInput.value.toLowerCase();
-        const rows = document.querySelectorAll('#admisBody tr');
-        rows.forEach(row => {
-            const text = row.textContent.toLowerCase();
-            row.style.display = text.includes(value) ? '' : 'none';
+    if (filterInput) {
+        filterInput.addEventListener('keyup', () => {
+            const value = filterInput.value.toLowerCase();
+            const rows = document.querySelectorAll('#admisBody tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(value) ? '' : 'none';
+            });
         });
-    });
+    }
 });
