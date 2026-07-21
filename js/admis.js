@@ -25,12 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Gestion basique de séparation des colonnes par virgule
                 const cols = row.split(',').map(col => col.replace(/^["'](.*)["']$/, '$1').trim());
                 
-                if (cols.length >= 3 && cols[0] !== "") {
+                // On s'assure qu'on a assez de colonnes (ex: Horodatage, Nom, Option, Classe -> 4 colonnes minimum)
+                if (cols.length >= 4 && cols[1] !== "") {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td>${cols[0]}</td>
-                        <td>${cols[1]}</td>
-                        <td>${cols[2]}</td>
+                        <td>${cols[1]}</td> <!-- Nom de l'élève (colonne 2 du tableur) -->
+                        <td>${cols[2]}</td> <!-- Option (colonne 3 du tableur) -->
+                        <td>${cols[3]}</td> <!-- Classe (colonne 4 du tableur) -->
                     `;
                     tbody.appendChild(tr);
                 }
