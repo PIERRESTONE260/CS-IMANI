@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             date: "01 Sept", 
             extrait: "Préparez vos fournitures...", 
             contenu_complet: "Cette année scolaire, nous avons rénové notre établissement pour que les élèves se sentent en sécurité...", 
-            image: "img/rentre.png" 
+            image: "img/actualites/rentre.png" 
         },
         { 
             id: 2, 
