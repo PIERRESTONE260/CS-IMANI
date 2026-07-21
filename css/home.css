@@ -1,4 +1,4 @@
-/* STYLES ORIGINAUX CONSERVÉS */
+/* --- STYLES ORIGINAUX CONSERVÉS --- */
 .hero {
     background: linear-gradient(rgba(26, 58, 95, 0.85), rgba(26, 58, 95, 0.85)), 
                 url('../img/school-bg.jpg');
@@ -37,7 +37,7 @@
 .hero-carousel img {
     width: 100%; 
     height: 100%;
-    object-fit: cover; /* Empêche l'image d'être étirée ou écrasée */
+    object-fit: cover;
     display: none; 
 }
 
@@ -71,9 +71,9 @@ select {
     margin-top: 15px;
 }
 
-/* GRILLE DE GALERIE (IMAGES PARFAITEMENT ALIGNÉES) */
+/* --- SECTION DÉCOUVREZ CS BANZA (GRILLE DE 3 COLONNES COMPACTE SUR MOBILE) --- */
 #galerie {
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1rem;
 }
 
 .section-subtitle {
@@ -82,16 +82,11 @@ select {
     color: #666;
 }
 
-/* --- SECTION DÉCOUVREZ CS BANZA (GRILLE DE 3 COLONNES COMPACTE) --- */
-#galerie {
-    padding: 1.5rem 1rem;
-}
-
 .galerie-grid, .photo-grid {
     display: grid;
-    /* Force exactement 3 colonnes égales sur toutes les tailles mobiles */
+    /* 3 colonnes égales sur mobile */
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px; /* Espace serré et propre entre les images */
+    gap: 8px;
     margin-top: 15px;
     width: 100%;
     box-sizing: border-box;
@@ -99,8 +94,8 @@ select {
 
 .galerie-grid img, .photo-grid img {
     width: 100%;
-    height: 85px; /* Hauteur fixe réduite pour que les 7 images tiennent dans un espace compact sans faire défiler la page */
-    object-fit: cover; /* Empêche l'image d'être déformée */
+    height: 85px; /* Hauteur fixe compacte pour voir toutes les images d'un coup */
+    object-fit: cover;
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: block;
@@ -111,7 +106,6 @@ select {
     text-align: center;
 }
 
-/* Texte sous les images (légende) masqué ou ultra-compact sur mobile pour ne pas alourdir */
 .galerie-grid figcaption, .photo-grid figcaption, .galerie-grid small, .photo-grid small {
     font-size: 0.65rem;
     color: #666;
@@ -122,13 +116,7 @@ select {
     display: block;
 }
 
-/* Si la 7ème image est seule sur la dernière ligne, on peut l'étendre un peu ou la centrer proprement */
-.galerie-grid img:nth-child(7), .photo-grid img:nth-child(7) {
-    /* Si tu veux qu'elle prenne toute la largeur de la dernière ligne, décommente la ligne suivante : */
-    /* grid-column: 1 / -1; height: 100px; */
-}
-
-/* ADMINISTRATION (PHOTOS DE PROFIL CIRCULAIRES ET PROPRES) */
+/* ADMINISTRATION (PHOTOS DE PROFIL CIRCULAIRES) */
 .admin-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -147,10 +135,10 @@ select {
 .admin-card img {
     width: 110px;
     height: 110px;
-    border-radius: 50%; /* Rend la photo parfaitement ronde */
-    object-fit: cover;    /* Empêche l'aplatissement du visage/portrait */
+    border-radius: 50%;
+    object-fit: cover;
     margin-bottom: 12px;
-    border: 3px solid var(--accent); /* Joli contour aux couleurs de l'école */
+    border: 3px solid var(--accent);
 }
 
 .admin-card h3 {
@@ -172,7 +160,7 @@ select {
     color: #666;
 }
 
-/* --- ADAPTATION MOBILE --- */
+/* --- ADAPTATION MOBILE & PC --- */
 @media (max-width: 768px) {
     .hero {
         padding: 3rem 1rem;
@@ -184,9 +172,12 @@ select {
 
     .admin-card img {
         width: 95px;
-        height: 95px; /* Légèrement plus compact sur petits téléphones */
+        height: 95px;
     }
+}
 
+/* --- GRILLE AGRANDIE POUR LES GRANDS ÉCRANS (PC) --- */
+@media (min-width: 769px) {
     .galerie-grid, .photo-grid {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 15px;
