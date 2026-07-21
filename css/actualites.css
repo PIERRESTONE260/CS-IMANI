@@ -1,6 +1,6 @@
 .news-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-top: 20px;
 }
@@ -12,10 +12,21 @@
     box-shadow: var(--shadow);
     border-top: 5px solid var(--accent);
     transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Empêche les éléments de dépasser des bords arrondis */
 }
 
 .news-card:active {
     transform: scale(0.98);
+}
+
+/* Style des images dans les cartes (corrigé pour s'intégrer parfaitement avec le padding) */
+.news-img {
+    width: calc(100% + 40px); /* Compense le padding du parent */
+    height: 160px;
+    object-fit: cover; 
+    margin: -20px -20px 15px -20px; /* Vient coller l'image proprement en haut de la carte */
 }
 
 .news-date {
@@ -39,7 +50,7 @@
     margin-bottom: 15px;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* Limite à 3 lignes de texte */
-    line-clamp: 3; /* Standard property for compatibility */
+    line-clamp: 3; 
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -49,14 +60,7 @@
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
-}
-
-/* Style des images dans les cartes */
-.news-img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover; /* Garantit que l'image ne se déforme pas */
-    border-radius: 10px 10px 0 0;
+    margin-top: auto; /* Pousse le bouton toujours tout en bas de la carte */
 }
 
 /* Style de la fenêtre modale (lecture complète) */
@@ -66,19 +70,32 @@
     top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.8);
     z-index: 1000;
+    overflow-y: auto; /* Permet de faire défiler si le texte est long sur mobile */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .modal-content {
     background: white;
-    margin: 10% auto;
+    margin: 5% auto;
     padding: 20px;
-    width: 90%;
+    width: 100%;
     max-width: 600px;
     border-radius: 15px;
+    box-sizing: border-box;
 }
 
 .close-btn {
     float: right;
     cursor: pointer;
     font-size: 2rem;
+    line-height: 1;
+}
+
+/* Ajustement spécifique pour les très petits mobiles */
+@media (max-width: 480px) {
+    .modal-content {
+        margin: 10% auto;
+        padding: 15px;
+    }
 }

@@ -1,33 +1,69 @@
+/* --- SECTION RECHERCHE ET FORMULAIRES --- */
 .search-box {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 12px;
     margin-bottom: 25px;
 }
 
-.search-box input { flex: 2; }
+.search-box input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--light, #f8f9fa);
+    box-sizing: border-box;
+}
+
 .search-box button {
-    flex: 1;
+    width: 100%;
     background-color: var(--primary);
     color: var(--white);
     border: none;
     border-radius: 8px;
+    padding: 12px;
     cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
 }
 
+.search-box button:hover {
+    opacity: 0.9;
+}
+
+/* --- CARTE DE RÉSULTAT --- */
 .result-card {
     background: var(--white);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     text-align: center;
+    border: 2px solid var(--primary);
+    box-sizing: border-box;
+    margin-top: 20px;
 }
 
+#displayNom {
+    color: var(--primary);
+    margin-bottom: 5px;
+    font-size: 1.3rem;
+}
+
+#displayClasse {
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+/* --- BARRE DE PROGRESSION --- */
 .progress-bar {
     background: #e0e0e0;
     border-radius: 15px;
     height: 25px;
     overflow: hidden;
     margin: 20px 0;
+    width: 100%;
 }
 
 #progressFill {
@@ -45,63 +81,42 @@
 
 .hidden { display: none; }
 
-/* --- Style du Bulletin Scolaire --- */
-
-/* Style pour la zone des notes */
+/* --- STYLE DU BULLETIN SCOLAIRE & NOTES --- */
 #notesDetails {
     background: #f8f9fa;
     padding: 15px;
     border-radius: 10px;
     border: 1px solid #dee2e6;
     margin-top: 20px;
+    text-align: left;
 }
 
 #notesDetails p {
     display: flex;
     justify-content: space-between;
-    padding: 5px 0;
+    padding: 8px 0;
     border-bottom: 1px dashed #ccc;
     margin: 0;
+    font-size: 0.95rem;
 }
 
-/* Style des champs de connexion */
-.search-box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 25px;
+#notesDetails p:last-child {
+    border-bottom: none;
 }
 
-.search-box input {
-    padding: 12px;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    font-size: 1rem;
-}
-
-/* Amélioration de la carte de résultat */
-.result-card {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    text-align: center;
-    border: 2px solid var(--primary);
-}
-
-#displayNom {
-    color: var(--primary);
-    margin-bottom: 5px;
-}
-
-#displayClasse {
-    font-weight: bold;
-    color: var(--accent);
-}
-
-/* Responsive pour mobile */
-@media (max-width: 600px) {
+/* --- ADAPTATION RESPONSIVE (TABLETTES ET PC) --- */
+@media (min-width: 600px) {
     .search-box {
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .search-box input {
+        flex: 2;
+    }
+
+    .search-box button {
+        flex: 1;
+        width: auto;
     }
 }
