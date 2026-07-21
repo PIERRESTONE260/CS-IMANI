@@ -82,38 +82,50 @@ select {
     color: #666;
 }
 
-/* --- GRILLE DES IMAGES (3 COLONNES SUR MOBILE) --- */
+/* --- SECTION DÉCOUVREZ CS BANZA (GRILLE DE 3 COLONNES COMPACTE) --- */
+#galerie {
+    padding: 1.5rem 1rem;
+}
+
 .galerie-grid, .photo-grid {
     display: grid;
-    /* Force exactement 3 colonnes, même sur les petits écrans de téléphone */
+    /* Force exactement 3 colonnes égales sur toutes les tailles mobiles */
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px; /* Réduit l'espace entre les mini-images pour que ça reste compact */
+    gap: 8px; /* Espace serré et propre entre les images */
     margin-top: 15px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .galerie-grid img, .photo-grid img {
     width: 100%;
-    height: 90px; /* Hauteur réduite pour s'adapter parfaitement au format 3 colonnes */
+    height: 85px; /* Hauteur fixe réduite pour que les 7 images tiennent dans un espace compact sans faire défiler la page */
     object-fit: cover; /* Empêche l'image d'être déformée */
     border-radius: 6px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
+    display: block;
 }
 
 .galerie-grid figure, .photo-grid figure {
     margin: 0;
+    text-align: center;
 }
 
-/* Texte sous les images (légende) si présent, rendu plus petit pour mobile */
-.galerie-grid figcaption, .photo-grid figcaption, .galerie-grid small {
-    font-size: 0.7rem;
-    text-align: center;
-    color: #555;
-    margin-top: 3px;
-    display: block;
+/* Texte sous les images (légende) masqué ou ultra-compact sur mobile pour ne pas alourdir */
+.galerie-grid figcaption, .photo-grid figcaption, .galerie-grid small, .photo-grid small {
+    font-size: 0.65rem;
+    color: #666;
+    margin-top: 2px;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Évite que le texte long ne casse la mise en page */
+    text-overflow: ellipsis;
+    display: block;
+}
+
+/* Si la 7ème image est seule sur la dernière ligne, on peut l'étendre un peu ou la centrer proprement */
+.galerie-grid img:nth-child(7), .photo-grid img:nth-child(7) {
+    /* Si tu veux qu'elle prenne toute la largeur de la dernière ligne, décommente la ligne suivante : */
+    /* grid-column: 1 / -1; height: 100px; */
 }
 
 /* ADMINISTRATION (PHOTOS DE PROFIL CIRCULAIRES ET PROPRES) */

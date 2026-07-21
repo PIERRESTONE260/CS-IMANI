@@ -20,9 +20,10 @@ body {
     color: var(--dark);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 70px; /* Compense la hauteur de la navbar fixe pour ne pas cacher le contenu */
 }
 
-/* NAVBAR & HAMBURGER */
+/* NAVBAR & HAMBURGER (IMMOBILE / FIXE EN HAUT) */
 .navbar {
     background: var(--primary);
     color: var(--white);
@@ -30,11 +31,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed; /* Reste immobile lors du défilement */
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1000;
     height: 70px;
     box-sizing: border-box;
+    box-shadow: var(--shadow);
 }
 
 .logo-area {
@@ -186,7 +190,6 @@ h2 {
     background: var(--primary);
 }
 
-/* FOOTER COMPLET RESPONSIVE */
 /* --- FOOTER EN 2 COLONNES (GAUCHE / DROITE) --- */
 .footer { 
     background: var(--primary); 
@@ -197,7 +200,7 @@ h2 {
 
 .footer-grid { 
     display: grid; 
-    grid-template-columns: 1fr 1fr; /* Exactement 2 colonnes égales */
+    grid-template-columns: 1fr 1fr; /* Exactement 2 colonnes égales sur mobile */
     gap: 15px; 
     max-width: 1200px;
     margin-left: auto;
