@@ -92,6 +92,17 @@
     line-height: 1;
 }
 
+.btn-whatsapp {
+    background-color: #25d366;
+    color: var(--white);
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
 /* Ajustement spécifique pour les très petits mobiles */
 @media (max-width: 480px) {
     .modal-content {

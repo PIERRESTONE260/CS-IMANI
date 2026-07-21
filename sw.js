@@ -20,8 +20,8 @@ const ASSETS = [
   '/admis.js',
   '/actualites.js',
   '/trousseau.js',
-  '/logo.svg',
-  '/favicon.svg',
+  '/logo.png',
+  '/favicon.png',
   '/manifest.json'
 ];
 
