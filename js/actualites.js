@@ -34,22 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const containerDernieres = document.getElementById('newsGrid');
     const containerAnciennes = document.getElementById('anciennesGrid');
     
-    // 2. TES ACTUALITÉS LOCALES EN DUR (Elles vont directement dans les anciennes pour servir de base historique)
+    // 2. TES ACTUALITÉS LOCALES DE SECOURS (Elles vont dans les anciennes pour servir d'historique)
     const newsDataSecours = [
         { 
-            id: 1, 
-            titre: "Rentrée Scolaire 2024", 
+            id: 'secours_1', 
+            titre: "Rentrée Scolaire", 
             date: "01 Sept", 
             extrait: "Préparez vos fournitures...", 
             contenu_complet: "Cette année scolaire, nous avons rénové notre établissement pour que les élèves se sentent en sécurité...", 
             image: "img/actualites/rentre.png" 
         },
         { 
-            id: 2, 
+            id: 'secours_2', 
             titre: "Nouveaux Labos", 
             date: "15 Août", 
             extrait: "Inauguration de la salle informatique...", 
-            contenu_complet: "L'inauguration de notre salle de labo informatique, donc nos futurs gestionnaires et développeurs sont maintenant rassurés...", 
+            contenu_complet: "L'inauguration de notre labo informatique, pour que nos futurs développeurs soient dans les meilleures conditions...", 
             image: "img/galerie_info.png" 
         }
     ];
@@ -61,39 +61,53 @@ document.addEventListener('DOMContentLoaded', () => {
             imageUrl = `https://centre-cotrole-cs-banza.onrender.com/static/${actu.image}`;
         }
 
+        // Gestion de l'affichage de la date (soit date_creation formatée, soit la chaîne date fournie)
+        let affichageDate = actu.date || "";
+        if (actu.date_creation && !actu.date) {
+            try {
+                const d = new Date(actu.date_creation);
+                affichageDate = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short', year: 'numeric' });
+            } catch(e) {
+                affichageDate = "";
+            }
+        }
+
         return `
-            <article class="news-card" onclick="ouvrirArticle(${actu.id})" style="cursor: pointer;">
+            <article class="news-card" onclick="ouvrirArticle('${actu.id}')" style="cursor: pointer;">
                 <img src="${imageUrl}" class="news-img" alt="image" onerror="this.src='img/default.jpg'">
                 <div style="padding: 15px;">
-                    <span class="news-date">${actu.date}</span>
+                    <span class="news-date">${affichageDate}</span>
                     <h3>${actu.titre}</h3>
-                    <p>${actu.extrait}</p>
+                    <p>${actu.extrait || actu.contenu_complet?.substring(0, 80) + '...' || ''}</p>
                     <button class="read-more">Lire la suite</button>
                 </div>
             </article>`;
     };
 
-    // Fonction principale de tri et d'affichage
+    // Fonction principale de tri et d'affichage avec persistance garantie
     const traiterEtAfficherActualites = (dataApi) => {
-        // On fusionne tout dans le tableau global pour que la modale retrouve tous les articles
-        // Les articles locaux en dur sont combinés avec ceux de l'API
+        // Fusion sécurisée de toutes les sources pour la modale (API + Secours locaux)
         toutesLesActualites = [...dataApi, ...newsDataSecours];
 
         containerDernieres.innerHTML = "";
         containerAnciennes.innerHTML = "";
 
         const maintenant = new Date();
-        const unMoisEnMs = 30 * 24 * 60 * 60 * 1000; // 30 jours
+        const unMoisEnMs = 30 * 24 * 60 * 60 * 1000; // Période exacte de 30 jours
 
         let countDernieres = 0;
 
-        // A) Traitement des actualités provenant de l'API (Centre de Contrôle)
+        // A) Analyse et tri automatique des actualités du Centre de Contrôle
         dataApi.forEach(actu => {
+            // Sécurité sur la date de création renvoyée par l'API
             let dateActu = actu.date_creation ? new Date(actu.date_creation) : new Date();
+            if (isNaN(dateActu.getTime())) {
+                dateActu = new Date(); // Fallback si la date est invalide
+            }
+
             let ageEnMs = maintenant - dateActu;
 
-            // Si l'article de l'API a moins d'un mois -> "Dernières actualités"
-            // S'il est plus vieux -> "Anciennes actualités" (archivé sans suppression)
+            // Règle d'or : Moins de 30 jours -> Dernières | Plus de 30 jours -> Archivé automatiquement dans Anciennes (jamais supprimé)
             if (ageEnMs <= unMoisEnMs) {
                 containerDernieres.innerHTML += creerCarteHtml(actu);
                 countDernieres++;
@@ -102,36 +116,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Message propre si aucune actualité récente n'est trouvée
         if (countDernieres === 0) {
-            containerDernieres.innerHTML = "<p>Aucune actualité très récente. Consultez les anciennes actualités ci-dessous.</p>";
+            containerDernieres.innerHTML = "<p style='color: #666; font-style: italic;'>Aucune actualité publiée ce mois-ci. Retrouvez l'historique complet de nos activités dans les anciennes actualités ci-dessous.</p>";
         }
 
-        // B) Les actualités statiques en dur vont toujours dans "Anciennes Actualités" pour garder l'historique
+        // B) Ajout systématique des actualités de secours dans les anciennes pour enrichir l'historique
         newsDataSecours.forEach(actu => {
             containerAnciennes.innerHTML += creerCarteHtml(actu);
         });
     };
 
-    // 3. Appel vers ton Centre de Contrôle en ligne
+    // 3. Appel de l'API du Centre de Contrôle en ligne
     const API_URL = "https://centre-cotrole-cs-banza.onrender.com/api/actualites";
     
     fetch(API_URL)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error("Erreur réseau API");
+            return response.json();
+        })
         .then(data => {
-            traiterEtAfficherActualites(data);
+            traiterEtAfficherAnormalesOuDirectes = data;
+            traiterEtAfficherActualites(Array.isArray(data) ? data : []);
         })
         .catch(err => {
-            console.warn("Centre de Contrôle injoignable, affichage exclusif des actualités locales", err);
-            traiterEtAfficherActualites([]); // Si l'API échoue, les secours locaux s'affichent quand même dans les anciennes
+            console.warn("Centre de Contrôle distant injoignable, basculement sur le mode secours local :", err);
+            traiterEtAfficherActualites([]); // Laisse les secours locaux s'afficher dans les anciennes
         });
-
-    console.log("Système d'actualités CS BANZA (avec persistance et archivage) chargé.");
 });
 
 // --- LOGIQUE DE LA MODALE ---
 
 function ouvrirArticle(id) {
-    const actu = toutesLesActualites.find(a => a.id === id); 
+    // Recherche de l'article par son ID (gère aussi bien les ID numériques que textuels)
+    const actu = toutesLesActualites.find(a => String(a.id) === String(id)); 
     if (!actu) return;
 
     let imageUrl = actu.image;
@@ -139,8 +157,8 @@ function ouvrirArticle(id) {
         imageUrl = `https://centre-cotrole-cs-banza.onrender.com/static/${actu.image}`;
     }
 
-    document.getElementById('modalTitle').innerText = actu.titre;
-    document.getElementById('modalFullText').innerText = actu.contenu_complet || actu.contenu;
+    document.getElementById('modalTitle').innerText = actu.titre || "";
+    document.getElementById('modalFullText').innerText = actu.contenu_complet || actu.contenu || "";
     document.getElementById('modalImg').src = imageUrl;
     document.getElementById('modalArticle').style.display = "block";
 }
