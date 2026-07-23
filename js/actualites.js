@@ -127,20 +127,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // 3. Appel de l'API du Centre de Contrôle en ligne
-    const API_URL = "https://centre-cotrole-cs-banza.onrender.com/api/actualites";
+    // 3. Appel combiné : Tente d'abord l'API Render (qui interroge ton nouveau Google Sheet d'actualités)
+    const API_URL_RENDER = "https://centre-cotrole-cs-banza.onrender.com/api/actualites";
+    // Tu peux aussi interroger directement ton URL Google Apps Script si besoin en secours direct :
+    const API_URL_GSHEET = "https://script.google.com/macros/s/AKfycbzhXH7mgftRTTr6uh90X_r92NVyDhZNrIQ53dCvgWbhstSaRb1NIrRqA49xlHXc_VqK/exec?action=getActualites";
     
-    fetch(API_URL)
+    fetch(API_URL_RENDER)
         .then(response => {
-            if (!response.ok) throw new Error("Erreur réseau API");
+            if (!response.ok) throw new Error("Erreur réseau API Render");
             return response.json();
         })
         .then(data => {
-            traiterEtAfficherAnormalesOuDirectes = data;
             traiterEtAfficherActualites(Array.isArray(data) ? data : []);
         })
         .catch(err => {
-            console.warn("Centre de Contrôle distant injoignable, basculement sur le mode secours local :", err);
+            console.warn("API Render injoignable, tentative directe sur le Google Sheet Actualités...", err);
+            // Second essai direct sur le Google Sheet si Render est en veille
+            return fetch(API_URL_GSHEET)
+                .then(res => res.json())
+                .then(dataGs => {
+                    traiterEtAfficherActualites(Array.isArray(dataGs) ? dataGs : []);
+                });
+        })
+        .catch(err2 => {
+            console.warn("Mode secours activé (sources distantes indisponibles) :", err2);
             traiterEtAfficherActualites([]); // Laisse les secours locaux s'afficher dans les anciennes
         });
 });
