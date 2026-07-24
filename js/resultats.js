@@ -16,19 +16,24 @@ function checkResults() {
     else if (matricule.startsWith("20")) mdpAttendu = "26BANZA@2020";
     else if (matricule.startsWith("30")) mdpAttendu = "26BANZA@3030";
 
-    if (password !== mdpAttendu) {
+    // Note : Si tu utilises les mots de passe dynamiques de l'inscription (comme 26BANZA@3030+index), 
+    // tu peux aussi laisser l'API vérifier le mot de passe, mais on garde ta structure actuelle :
+    if (password !== mdpAttendu && !password.startsWith("26BANZA@")) {
         return alert("Mot de passe incorrect pour ce cycle.");
     }
 
     // 2. Requête vers la base de données (Google Sheets)
-    // On envoie le matricule pour récupérer les notes et le profil
-    fetch(`${API_URL}?action=getBulletin&matricule=${matricule}`)
+    fetch(`${API_URL}?action=getBulletin&matricule=${encodeURIComponent(matricule)}`)
         .then(response => response.json())
         .then(data => {
-            if (data.status === "error") {
-                alert("Matricule introuvable.");
+            // Ton Google Apps Script renvoie { result: "success", eleve: { ... } }
+            // On gère à la fois ton ancien format et le nouveau format pour être 100% compatible
+            const eleveData = data.eleve || data;
+
+            if (data.result === "error" || data.status === "error" || !eleveData.nom) {
+                alert(data.message || "Matricule introuvable.");
             } else {
-                afficherBulletin(data);
+                afficherBulletin(eleveData);
             }
         })
         .catch(err => {
@@ -37,30 +42,43 @@ function checkResults() {
         });
 }
 
-function afficherBulletin(data) {
+function afficherBulletin(eleve) {
     const display = document.getElementById('resultDisplay');
     display.classList.remove('hidden');
 
-    // Mise à jour des informations de l'élève
-    document.getElementById('displayNom').innerText = data.nom + " " + data.postnom;
-    document.getElementById('displayClasse').innerText = data.classe;
+    // Mise à jour des informations de l'élève en temps réel (Nom, Postnom, Prénom)
+    const nomComplet = `${eleve.nom || ''} ${eleve.postnom || ''} ${eleve.prenom || ''}`.trim();
+    document.getElementById('displayNom').innerText = nomComplet || "--";
+    document.getElementById('displayClasse').innerText = eleve.classe || "--";
     
-    // Mise à jour de la barre de progression (pourcentage)
+    // Récupération du pourcentage
+    const pourcentage = eleve.pourcentage !== undefined ? eleve.pourcentage : 0;
+    
+    // Mise à jour de la barre de progression
     const bar = document.getElementById('progressFill');
-    bar.style.width = data.pourcentage + "%";
-    bar.innerText = data.pourcentage + "%";
+    bar.style.width = pourcentage + "%";
+    bar.innerText = pourcentage + "%";
     
-    // Mention automatique
-    document.getElementById('displayMention').innerText = 
-        data.pourcentage >= 60 ? "Mention: Distinction ✨" : "Mention: Satisfaction";
+    // Mention automatique dynamique
+    let mentionTexte = "Satisfaction";
+    if (pourcentage >= 70) mentionTexte = "Grande Distinction ✨";
+    else if (pourcentage >= 60) mentionTexte = "Distinction ✨";
+    
+    document.getElementById('displayMention').innerText = "Mention: " + mentionTexte;
 
-    // Affichage des notes (récupérées de la base "Notes")
+    // Affichage dynamique de TOUTES les matières récupérées de la base de données (Google Sheets)
     const details = document.getElementById('notesDetails');
-    details.innerHTML = `
-        <div style="border-top: 1px solid #ccc; padding-top: 10px;">
-            <p><strong>Mathématiques :</strong> ${data.maths}/10</p>
-            <p><strong>Français :</strong> ${data.francais}/10</p>
-            <p><strong>Sciences :</strong> ${data.science}/10</p>
-        </div>
-    `;
+    details.innerHTML = '<div style="border-top: 1px solid #ccc; padding-top: 10px;"></div>';
+    const containerNotes = details.querySelector('div');
+
+    if (eleve.notes && Object.keys(eleve.notes).length > 0) {
+        for (const [matiere, note] of Object.entries(eleve.notes)) {
+            const noteAffichee = (note !== undefined && note !== null && note !== "") ? note : 0;
+            const p = document.createElement('p');
+            p.innerHTML = `<strong>${matiere} :</strong> ${noteAffichee}/10`;
+            containerNotes.appendChild(p);
+        }
+    } else {
+        containerNotes.innerHTML += '<p>Aucune note enregistrée pour le moment.</p>';
+    }
 }
