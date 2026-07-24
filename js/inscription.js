@@ -8,8 +8,21 @@ document.getElementById('enrollmentForm').addEventListener('submit', async (e) =
     btn.disabled = true;
     btn.innerText = "Envoi en cours...";
 
+    // Récupération de la valeur brute du champ nom
+    const nomCompletBrut = document.getElementById('nomEleve').value.trim();
+    const partiesNom = nomCompletBrut.split(/\s+/);
+    
+    // Découpage intelligent pour alimenter les variables attendues par le Google Apps Script (nom, postnom, prénom)
+    const nom = partiesNom[0] || "";
+    const postnom = partiesNom[1] || "";
+    const prenom = partiesNom.slice(2).join(" ") || "";
+
     const data = {
-        nomEleve: document.getElementById('nomEleve').value,
+        action: "inscrireEleve",
+        nomEleve: nomCompletBrut,
+        nom: nom,
+        postnom: postnom,
+        prenom: prenom,
         option: document.getElementById('option').value,
         classe: document.getElementById('classe').value,
         nomParent: document.getElementById('nomParent').value,
