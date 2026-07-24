@@ -10,14 +10,12 @@ function checkResults() {
         return alert("Veuillez remplir le matricule et le mot de passe.");
     }
 
-    // 1. Logique de mot de passe par cycle (basée sur votre règle)
+    // 1. Logique de mot de passe par cycle
     let mdpAttendu = "";
     if (matricule.startsWith("10")) mdpAttendu = "26BANZA@1010";
     else if (matricule.startsWith("20")) mdpAttendu = "26BANZA@2020";
     else if (matricule.startsWith("30")) mdpAttendu = "26BANZA@3030";
 
-    // Note : Si tu utilises les mots de passe dynamiques de l'inscription (comme 26BANZA@3030+index), 
-    // tu peux aussi laisser l'API vérifier le mot de passe, mais on garde ta structure actuelle :
     if (password !== mdpAttendu && !password.startsWith("26BANZA@")) {
         return alert("Mot de passe incorrect pour ce cycle.");
     }
@@ -26,8 +24,6 @@ function checkResults() {
     fetch(`${API_URL}?action=getBulletin&matricule=${encodeURIComponent(matricule)}`)
         .then(response => response.json())
         .then(data => {
-            // Ton Google Apps Script renvoie { result: "success", eleve: { ... } }
-            // On gère à la fois ton ancien format et le nouveau format pour être 100% compatible
             const eleveData = data.eleve || data;
 
             if (data.result === "error" || data.status === "error" || !eleveData.nom) {
@@ -51,18 +47,27 @@ function afficherBulletin(eleve) {
     document.getElementById('displayNom').innerText = nomComplet || "--";
     document.getElementById('displayClasse').innerText = eleve.classe || "--";
     
-    // Récupération du pourcentage
-    const pourcentage = eleve.pourcentage !== undefined ? eleve.pourcentage : 0;
+    // Récupération du pourcentage calculé automatiquement par le backend
+    const pourcentage = (eleve.pourcentage !== undefined && eleve.pourcentage !== null && !isNaN(eleve.pourcentage)) ? parseFloat(eleve.pourcentage) : 0;
     
     // Mise à jour de la barre de progression
     const bar = document.getElementById('progressFill');
     bar.style.width = pourcentage + "%";
     bar.innerText = pourcentage + "%";
     
-    // Mention automatique dynamique
+    // Mention automatique dynamique selon tes règles précises :
+    // - Moins de 50% = Reprend l'année
+    // - 50% et plus = Satisfaction (ou Distinction / Grande Distinction si supérieur)
     let mentionTexte = "Satisfaction";
-    if (pourcentage >= 70) mentionTexte = "Grande Distinction ✨";
-    else if (pourcentage >= 60) mentionTexte = "Distinction ✨";
+    if (pourcentage < 50) {
+        mentionTexte = "Reprend l'année ❌";
+    } else if (pourcentage >= 80) {
+        mentionTexte = "La Plus Grande Distinction ✨";
+    } else if (pourcentage >= 70) {
+        mentionTexte = "Grande Distinction ✨";
+    } else if (pourcentage >= 60) {
+        mentionTexte = "Distinction ✨";
+    }
     
     document.getElementById('displayMention').innerText = "Mention: " + mentionTexte;
 
