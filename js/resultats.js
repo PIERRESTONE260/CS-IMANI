@@ -76,8 +76,14 @@ function afficherBulletin(eleve) {
     details.innerHTML = '<div style="border-top: 1px solid #ccc; padding-top: 10px;"></div>';
     const containerNotes = details.querySelector('div');
 
-    if (eleve.notes && Object.keys(eleve.notes).length > 0) {
-        for (const [matiere, note] of Object.entries(eleve.notes)) {
+    // MODIFICATION ICI : On s'assure de récupérer tous les cours, que la base de données les appelle "matieres" ou "notes"
+    const listeMatieres = eleve.matieres || eleve.notes || {};
+
+    if (Object.keys(listeMatieres).length > 0) {
+        for (const [matiere, note] of Object.entries(listeMatieres)) {
+            // Sécurité : On empêche l'affichage accidentel des colonnes systèmes comme le Pourcentage
+            if (matiere.toLowerCase().includes("pourcentage") || matiere.toLowerCase() === "%" || matiere.trim() === "") continue;
+
             const noteAffichee = (note !== undefined && note !== null && note !== "") ? note : 0;
             const p = document.createElement('p');
             p.innerHTML = `<strong>${matiere} :</strong> ${noteAffichee}/10`;
