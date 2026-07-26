@@ -268,27 +268,36 @@ h2 {
 
 /* --- MEDIA QUERIES POUR GRANDS ÉCRANS (PC) --- */
 @media (min-width: 769px) {
-    /* Sur PC, on désactive le menu mobile replié pour afficher la barre de navigation horizontalement */
+    /* Sur PC, on désactive complètement le bouton hamburger */
     .hamburger {
         display: none !important;
     }
 
+    /* On réinitialise et aligne proprement tous les liens de navigation en ligne sur PC */
     .nav-links {
-        position: static;
-        width: auto;
-        height: auto;
-        background: transparent;
-        flex-direction: row;
-        padding: 0;
-        gap: 2rem;
-        box-shadow: none;
-        overflow-y: visible;
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        max-width: none !important;
+        background: transparent !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+        gap: 1.8rem !important; /* Espacement parfait pour que tous les menus tiennent sans déborder */
+        box-shadow: none !important;
+        overflow-y: visible !important;
+        transform: none !important;
+        right: auto !important;
+    }
+
+    .nav-links li a {
+        font-size: 1rem;
+        white-space: nowrap; /* Empêche les mots des menus de se couper sur deux lignes */
     }
 
     .nav-links li a.active {
-        border-left: none;
+        border-left: none !important;
         border-bottom: 3px solid var(--accent);
-        padding-left: 0;
+        padding-left: 0 !important;
         padding-bottom: 5px;
     }
 
