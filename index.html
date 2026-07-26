@@ -202,4 +202,51 @@
         <script src="js/navigation.js"></script>
         <script src="js/trousseau.js"></script>
     </body>
+
+    <!-- le js des images -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Création dynamique de la structure HTML de la modale dans la page
+            const modalHTML = `
+                <div id="imgModal" class="image-modal">
+                    <span class="image-modal-close">&times;</span>
+                    <img class="image-modal-content" id="modalImg">
+                    <div class="image-modal-caption" id="modalCaption"></div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+            const modal = document.getElementById("imgModal");
+            const modalImg = document.getElementById("modalImg");
+            const captionText = document.getElementById("modalCaption");
+            const closeBtn = document.querySelector(".image-modal-close");
+
+            // 2. Sélection de toutes les images de la galerie
+            const galerieImages = document.querySelectorAll(".photo-grid img, .galerie-grid img");
+
+            galerieImages.forEach(img => {
+                img.style.cursor = "pointer";
+                img.addEventListener("click", function() {
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+                    // Récupère le texte de la légende (figcaption) si disponible
+                    const figure = this.closest("figure");
+                    const figcaption = figure ? figure.querySelector("figcaption") : null;
+                    captionText.innerText = figcaption ? figcaption.innerText : this.alt;
+                });
+            });
+
+            // 3. Fermeture de la modale au clic sur la croix
+            closeBtn.addEventListener("click", function() {
+                modal.style.display = "none";
+            });
+
+            // 4. Fermeture aussi si on clique en dehors de l'image (sur le fond noir)
+            modal.addEventListener("click", function(e) {
+                if (e.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        });
+    </script>
 </html>

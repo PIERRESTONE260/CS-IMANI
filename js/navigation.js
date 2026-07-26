@@ -16,17 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- NOUVEL AJOUT : Logique du Carrousel ---
+    // --- LOGIQUE DU CARROUSEL OPTIMISÉE POUR LA VITESSE --- 
     const slides = document.querySelectorAll('.hero-carousel img');
     let currentSlide = 0;
 
     function nextSlide() {
+        if (slides.length === 0) return;
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
     }
 
-    // Change d'image toutes les 4 secondes
+    // Change d'image toutes les 4 secondes de manière fluide
     if (slides.length > 0) {
         setInterval(nextSlide, 4000);
     }

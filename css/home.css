@@ -196,6 +196,36 @@ select {
     .admin-card small {
         font-size: 0.7rem;  /* Description courte */
     }
+
+    /* CARROUSEL HERO OPTIMISÉ POUR LA VITESSE SUR MOBILE */
+    .hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 280px; /* Réserve une hauteur minimale fixe pour éviter que la page ne saute au chargement */
+    }
+
+    .hero-carousel {
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 0;
+    }
+
+    .hero-carousel img {
+        width: 100%; 
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out; /* Transition plus douce et rapide */
+        display: block; /* Évite les temps de chargement d'affichage en bloc */
+    }
+
+    .hero-carousel img.active { 
+        opacity: 1;
+        z-index: 1; 
+    }
 }
 
 /* --- GRILLE AGRANDIE POUR LES GRANDS ÉCRANS (PC) --- */
@@ -209,4 +239,85 @@ select {
         height: 180px;
         border-radius: 10px;
     }
+}
+
+/* --- AGRANDISSEMENT ET OPTIMISATION DE LA GALERIE SUR MOBILE --- */
+@media (max-width: 768px) {
+    .photo-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* Passe à 2 colonnes plus grandes et lisibles sur téléphone */
+        gap: 12px;
+    }
+    
+    .photo-grid img {
+        height: 120px !important; /* Augmente nettement la hauteur pour mieux voir les images de l'école */
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .photo-grid img:active {
+        transform: scale(0.97);
+    }
+}
+
+/* --- STYLE DE LA FENÊTRE MODALE (ZOOM IMAGE PLEIN ÉCRAN) --- */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Fond noir très sombre et immersif */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.image-modal-content {
+    max-width: 95%;
+    max-height: 85vh;
+    border-radius: 8px;
+    object-fit: contain;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    animation: zoomIn 0.25s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.image-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    user-select: none;
+}
+
+.image-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.image-modal-caption {
+    position: absolute;
+    bottom: 25px;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0 15px;
+    font-family: inherit;
 }
