@@ -31,60 +31,90 @@
             <h2>Processus d'Inscription</h2>
 
             <div class="payment-steps">
-                <h3>1. Paiement des Frais</h3>
-                <p>Effectuez le paiement de 50$ via :</p>
+                <h3>1. Grille des Frais Scolaires & Paiement</h3>
+                <p>Veuillez effectuer le montant correspondant à votre niveau :</p>
+                <div style="border: 2px solid var(--accent, #3b82f6); border-radius: 8px; padding: 15px; margin: 15px 0; background: #f8fafc;">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 6px 0; border-bottom: 1px solid #e2e8f0;"><strong>Maternelle :</strong> 30$[cite: 5]</li>
+                        <li style="padding: 6px 0; border-bottom: 1px solid #e2e8f0;"><strong>Primaire :</strong> 40$[cite: 5]</li>
+                        <li style="padding: 6px 0; border-bottom: 1px solid #e2e8f0;"><strong>7ème & 8ème EB (Secondaire) :</strong> 50$[cite: 5]</li>
+                        <li style="padding: 6px 0; border-bottom: 1px solid #e2e8f0;"><strong>Secondaire (Option Générale) :</strong> 60$[cite: 5]</li>
+                        <li style="padding: 6px 0;"><strong>Secondaire (Option Technique) :</strong> 70$[cite: 5]</li>
+                    </ul>
+                </div>
+                <p>Effectuez le dépôt via :</p>
                 <ul>
                     <li><strong>M-Pesa :</strong> *122*... (082 000 0000)</li>
-                    <li><strong>Orange Money :</strong> *144*... (089 000
-                        0000)</li>
+                    <li><strong>Orange Money :</strong> *144*... (089 000 0000)</li>
                 </ul>
-                <p class="warning">Gardez précieusement votre ID de
-                    transaction.</p>
+                <p id="montantAffiche" style="font-weight: bold; color: var(--accent); margin-top: 10px;">Montant à payer : Sélectionnez un niveau ci-dessous</p>
+                <p class="warning">Gardez précieusement votre ID de transaction.</p>
             </div>
 
             <form id="enrollmentForm">
                 <h3>2. Formulaire d'Information</h3>
-                <input type="text" id="nomEleve"
-                    placeholder="Nom complet de l'élève" required>
-                <select id="option">
-                    <option value="">Choisir l'option (si secondaire)</option>
-                    <option value="Aucune">Aucune (Maternelle, Primaire, EB)</option>
-                    <option value="CG">Commerciale et Gestion (CG)</option>
-                    <option value="ELEC">Électricité (ELEC)</option>
-                    <option value="MG">Mécanique Générale (MG)</option>
-                    <option value="TCC">Coupe et Couture (TCC)</option>
-                    <option value="LITT">Littéraire (LITT)</option>
-                    <option value="MA">Mécanique Automobile (MA)</option>
-                    <option value="HP">Pédagogique (HP)</option>
-                    <option value="SCIENCE">Scientifique (SCIENCES)</option>
-                </select>
-                <select id="classe" required>
-                    <option value="">Choisir la classe</option>
-                    <option value="1ère maternelle">1ère Maternelle</option>
-                    <option value="2ème maternelle">2ème Maternelle</option>
-                    <option value="3ème maternelle">3ème Maternelle</option>
-                    <option value="1ère primaire">1ère Primaire</option>
-                    <option value="2ème primaire">2ème Primaire</option>
-                    <option value="3ème primaire">3ème Primaire</option>
-                    <option value="4ème primaire">4ème Primaire</option>
-                    <option value="5ème primaire">5ème Primaire</option>
-                    <option value="6ème primaire">6ème Primaire</option>
-                    <option value="7ème secondaire">7ème Secondaire (Éducation de Base)</option>
-                    <option value="8ème secondaire">8ème Secondaire (Éducation de Base)</option>
-                    <option value="1ère secondaire">1ère Secondaire</option>
-                    <option value="2ème secondaire">2ème Secondaire</option>
-                    <option value="3ème secondaire">3ème Secondaire</option>
-                    <option value="4ème secondaire">4ème Secondaire</option>
-                </select>
-                <input type="text" id="nomParent"
-                    placeholder="Nom du Parent/Tuteur" required>
-                <input type="tel" id="telephone"
-                    placeholder="Téléphone du Parent" required>
-                <input type="text" id="idPaiement"
-                    placeholder="ID de Transaction" required>
+                
+                <!-- ÉTAPE 1 : INFOS DE BASE -->
+                <div id="step-1">
+                    <input type="text" id="nomEleve"
+                        placeholder="Nom complet de l'élève" required>
 
-                <button type="submit" id="btnSubmit">Confirmer
-                    l'inscription</button>
+                    <label for="niveau" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 10px;">Choisissez le niveau :</label>
+                    <select id="niveau" required>
+                        <option value="">-- Sélectionnez le niveau --</option>
+                        <option value="maternelle">Maternelle (30$)</option>
+                        <option value="primaire">Primaire (40$)</option>
+                        <option value="eb">Secondaire - 7è & 8è EB (50$)</option>
+                        <option value="general">Secondaire - Options Générales (60$)</option>
+                        <option value="technique">Secondaire - Options Techniques (70$)</option>
+                    </select>
+
+                    <!-- Choix de la classe dynamique selon le niveau -->
+                    <select id="classe" required style="margin-top: 10px;">
+                        <option value="">Choisir la classe</option>
+                    </select>
+
+                    <!-- Choix de l'option (affiché uniquement pour Secondaire Général ou Technique) -->
+                    <div id="option-wrapper" style="display: none; margin-top: 10px;">
+                        <label for="option" style="font-size: 0.9rem; font-weight: 600; display: block;">Choisir l'option :</label>
+                        <select id="option">
+                            <option value="Aucune">Aucune / Général</option>
+                            <optgroup label="Options Générales">
+                                <option value="LITT">Littéraire (LITT)</option>
+                                <option value="SCIENCE">Scientifique (SCIENCES)</option>
+                                <option value="HP">Pédagogique (HP)</option>
+                            </optgroup>
+                            <optgroup label="Options Techniques">
+                                <option value="CG">Commerciale et Gestion (CG)</option>
+                                <option value="ELEC">Électricité (ELEC)</option>
+                                <option value="MG">Mécanique Générale (MG)</option>
+                                <option value="TCC">Coupe et Couture (TCC)</option>
+                                <option value="MA">Mécanique Automobile (MA)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <input type="text" id="nomParent"
+                        placeholder="Nom du Parent/Tuteur" required style="margin-top: 15px;">
+                    <input type="tel" id="telephone"
+                        placeholder="Téléphone du Parent" required>
+
+                    <button type="button" id="btnSuivant" class="btn-main" style="width: 100%; margin-top: 15px;">Suivant</button>
+                </div>
+
+                <!-- ÉTAPE 2 : ID DE TRANSACTION & CONFIRMATION -->
+                <div id="step-2" style="display: none;">
+                    <div style="background: var(--light); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                        <p style="font-size: 0.95rem; margin-bottom: 5px;"><strong>Étape finale :</strong> Entrez l'ID de transaction reçu suite au paiement de vos frais d'inscription.</p>
+                    </div>
+                    <input type="text" id="idPaiement"
+                        placeholder="ID de Transaction (ex: MP26...)" required>
+
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <button type="button" id="btnPrecedent" class="btn-main" style="background: var(--dark); flex: 1;">Retour</button>
+                        <button type="submit" id="btnSubmit" class="btn-main" style="flex: 2;">Confirmer l'inscription</button>
+                    </div>
+                </div>
             </form>
         </main>
 
@@ -117,5 +147,83 @@
         
         <script src="js/navigation.js"></script>
         <script src="js/inscription.js"></script>
+
+        <!-- Script d'interactivité et de guidage du formulaire -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const niveauSelect = document.getElementById("niveau");
+                const classeSelect = document.getElementById("classe");
+                const optionWrapper = document.getElementById("option-wrapper");
+                const montantAffiche = document.getElementById("montantAffiche");
+                
+                const step1 = document.getElementById("step-1");
+                const step2 = document.getElementById("step-2");
+                const btnSuivant = document.getElementById("btnSuivant");
+                const btnPrecedent = document.getElementById("btnPrecedent");
+
+                // Gestion des listes déroulantes dynamiques selon le niveau choisi
+                niveauSelect.addEventListener("change", function() {
+                    const val = this.value;
+                    classeSelect.innerHTML = '<option value="">Choisir la classe</option>';
+                    optionWrapper.style.display = "none";
+
+                    if (val === "maternelle") {
+                        montantAffiche.innerText = "Montant à payer : 30$ (Maternelle)";
+                        ['1ère Maternelle', '2ème Maternelle', '3ème Maternelle'].forEach(c => {
+                            classeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+                        });
+                    } else if (val === "primaire") {
+                        montantAffiche.innerText = "Montant à payer : 40$ (Primaire)";
+                        ['1ère Primaire', '2ème Primaire', '3ème Primaire', '4ème Primaire', '5ème Primaire', '6ème Primaire'].forEach(c => {
+                            classeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+                        });
+                    } else if (val === "eb") {
+                        montantAffiche.innerText = "Montant à payer : 50$ (7ème & 8ème EB)";
+                        ['7ème Secondaire (Éducation de Base)', '8ème Secondaire (Éducation de Base)'].forEach(c => {
+                            classeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+                        });
+                    } else if (val === "general") {
+                        montantAffiche.innerText = "Montant à payer : 60$ (Secondaire - Option Générale)";
+                        ['1ère Secondaire', '2ème Secondaire', '3ème Secondaire', '4ème Secondaire'].forEach(c => {
+                            classeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+                        });
+                        optionWrapper.style.display = "block";
+                    } else if (val === "technique") {
+                        montantAffiche.innerText = "Montant à payer : 70$ (Secondaire - Option Technique)";
+                        ['1ère Secondaire', '2ème Secondaire', '3ème Secondaire', '4ème Secondaire'].forEach(c => {
+                            classeSelect.innerHTML += `<option value="${c}">${c}</option>`;
+                        });
+                        optionWrapper.style.display = "block";
+                    } else {
+                        montantAffiche.innerText = "Montant à payer : Sélectionnez un niveau ci-dessus";
+                    }
+                });
+
+                // Passage à l'étape 2 (ID de transaction) après vérification des champs de l'étape 1
+                btnSuivant.addEventListener("click", function() {
+                    const nomEleve = document.getElementById("nomEleve").value.trim();
+                    const niveau = niveauSelect.value;
+                    const classe = classeSelect.value;
+                    const nomParent = document.getElementById("nomParent").value.trim();
+                    const telephone = document.getElementById("telephone").value.trim();
+
+                    if (!nomEleve || !niveau || !classe || !nomParent || !telephone) {
+                        alert("Veuillez remplir tous les champs obligatoires de l'étape 1 avant de continuer.");
+                        return;
+                    }
+
+                    step1.style.display = "none";
+                    step2.style.display = "block";
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+
+                // Retour à l'étape 1
+                btnPrecedent.addEventListener("click", function() {
+                    step2.style.display = "none";
+                    step1.style.display = "block";
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        </script>
     </body>
 </html>
