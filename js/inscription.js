@@ -23,6 +23,9 @@ document.getElementById('enrollmentForm').addEventListener('submit', async (e) =
         nom: nom,
         postnom: postnom,
         prenom: prenom,
+        sexe: document.getElementById('sexe').value,
+        dateNaissance: document.getElementById('dateNaissance').value,
+        lieuNaissance: document.getElementById('lieuNaissance').value,
         option: document.getElementById('option').value,
         classe: document.getElementById('classe').value,
         nomParent: document.getElementById('nomParent').value,
@@ -40,6 +43,10 @@ document.getElementById('enrollmentForm').addEventListener('submit', async (e) =
 
         alert("Inscription envoyée avec succès à CS BANZA !");
         e.target.reset();
+
+        // Redirection automatique vers la page médicale
+        window.location.href = "medical.html";
+
     } catch (error) {
         alert("Erreur réseau. Vérifiez votre connexion.");
     } finally {
