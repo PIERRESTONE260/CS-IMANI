@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fiche Médicale Confidentielle - CS Banza</title>
+        <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+        <link rel="stylesheet" href="css/global.css">
+        <link rel="stylesheet" href="css/inscription.css">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo-area"><img src="logo.svg" class="logo-img"><span>CS BANZA</span></div>
+                <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="actualites.html">Actualités</a></li>
+                    <li><a href="inscription.html">Inscription</a></li>
+                    <li><a href="admis.html">Nouveaux Admis</a></li>
+                    <li><a href="resultats.html">Résultats</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="container">
+            <h2>FICHE MÉDICALE CONFIDENTIELLE</h2>
+            <p>Ce document est strictement confidentiel et destiné au suivi de santé de l'élève au sein de l'établissement.</p>
+
+            <form id="medicalForm" enctype="multipart/form-data" style="margin-top: 20px;">
+                
+                <!-- 1. IDENTIFICATION -->
+                <h3 style="color: var(--primary, #1a3a5f); font-size: 1.1rem; margin-top: 20px; border-bottom: 2px solid #eee; padding-bottom: 8px;">1. Informations Générales</h3>
+
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <div style="flex: 1;">
+                        <label for="nom" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Nom :</label>
+                        <input type="text" id="nom" placeholder="Nom de l'élève" required style="margin-top: 0;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="prenom" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Prénom :</label>
+                        <input type="text" id="prenom" placeholder="Prénom de l'élève" required style="margin-top: 0;">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <div style="flex: 1;">
+                        <label for="dateNaissance" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Date de naissance :</label>
+                        <input type="date" id="dateNaissance" required style="margin-top: 0;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="lieuNaissance" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Lieu de naissance :</label>
+                        <input type="text" id="lieuNaissance" placeholder="Lieu" required style="margin-top: 0;">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <div style="flex: 1;">
+                        <label for="sexe" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Sexe :</label>
+                        <select id="sexe" required style="margin-top: 0;">
+                            <option value="">-- Sexe --</option>
+                            <option value="M">Masculin</option>
+                            <option value="F">Féminin</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="groupeSanguin" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Groupe Sanguin :</label>
+                        <select id="groupeSanguin" required style="margin-top: 0;">
+                            <option value="">-- Groupe Sanguin --</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="Inconnu">Inconnu</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label for="photoPasseport" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Photo Passeport récente :</label>
+                <input type="file" id="photoPasseport" accept="image/*" required style="padding: 10px; background: #fff; border: 1px solid #cbd5e1; border-radius: 6px; width: 100%;">
+
+
+                <!-- 2. ÉTAT DE SANTÉ -->
+                <h3 style="color: var(--primary, #1a3a5f); font-size: 1.1rem; margin-top: 25px; border-bottom: 2px solid #eee; padding-bottom: 8px;">2. État de Santé Physique</h3>
+
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <div style="flex: 1;">
+                        <label for="taille" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Taille :</label>
+                        <input type="text" id="taille" placeholder="Ex: 1m20" style="margin-top: 0;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="poids" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Poids :</label>
+                        <input type="text" id="poids" placeholder="Ex: 25 kg" style="margin-top: 0;">
+                    </div>
+                    <div style="flex: 1;">
+                        <label for="constitution" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Constitution :</label>
+                        <input type="text" id="constitution" placeholder="Ex: Robuste, fragile..." style="margin-top: 0;">
+                    </div>
+                </div>
+
+                <label for="appareilPulmonaire" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Appareil pulmonaire :</label>
+                <input type="text" id="appareilPulmonaire" placeholder="Observations..." style="margin-top: 0;">
+
+                <label for="appareilCardio" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Appareil cardio-vasculaire :</label>
+                <input type="text" id="appareilCardio" placeholder="Observations..." style="margin-top: 0;">
+
+                <label for="pipiAuLit" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">L'enfant fait-il "pipi" au lit ?</label>
+                <select id="pipiAuLit" style="margin-top: 0;">
+                    <option value="Jamais">Jamais</option>
+                    <option value="Quelquefois">Quelquefois</option>
+                    <option value="Souvent">Souvent</option>
+                </select>
+
+
+                <!-- 3. MALADIES D'ENFANCE & VACCINATIONS -->
+                <h3 style="color: var(--primary, #1a3a5f); font-size: 1.1rem; margin-top: 25px; border-bottom: 2px solid #eee; padding-bottom: 8px;">3. Maladies d'enfance & Vaccinations</h3>
+
+                <label style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 10px; margin-bottom: 5px;">Maladies d'enfance (cochez ou précisez celles qu'il n'a pas eues) :</label>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #cbd5e1;">
+                    <label><input type="checkbox" name="maladie" value="Rougeole"> Rougeole</label>
+                    <label><input type="checkbox" name="maladie" value="Coqueluche"> Coqueluche</label>
+                    <label><input type="checkbox" name="maladie" value="Rubeole"> Rubéole</label>
+                    <label><input type="checkbox" name="maladie" value="Oreillons"> Oreillons</label>
+                    <label><input type="checkbox" name="maladie" value="Scarlatine"> Scarlatine</label>
+                    <label><input type="checkbox" name="maladie" value="Varicelle"> Varicelle</label>
+                </div>
+
+                <label for="vaccinations" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Vaccinations (préciser lesquelles avec les dates) :</label>
+                <textarea id="vaccinations" rows="2" placeholder="Ex: BCG, Polio, DTC avec dates..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;"></textarea>
+
+
+                <!-- 4. SUIVI PARTICULIER & CONTRE-INDICATIONS -->
+                <h3 style="color: var(--primary, #1a3a5f); font-size: 1.1rem; margin-top: 25px; border-bottom: 2px solid #eee; padding-bottom: 8px;">4. Traitements & Particularités Médicales</h3>
+
+                <label for="traitementCours" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 10px; margin-bottom: 5px;">Traitement en cours (préciser lequel) :</label>
+                <input type="text" id="traitementCours" placeholder="Aucun ou précisez..." style="margin-top: 0;">
+
+                <div style="display: flex; gap: 15px; align-items: center; margin-top: 15px;">
+                    <label style="font-size: 0.9rem; font-weight: 600;">Enfant asthmatique :</label>
+                    <label><input type="radio" name="asthmatique" value="OUI"> OUI</label>
+                    <label><input type="radio" name="asthmatique" value="NON" checked> NON</label>
+                </div>
+
+                <label for="allergies" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Allergies éventuelles :</label>
+                <textarea id="allergies" rows="2" placeholder="Précisez..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;"></textarea>
+
+                <label for="regimeAlimentaire" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Régime alimentaire particulier :</label>
+                <input type="text" id="regimeAlimentaire" placeholder="Aucun ou précisez..." style="margin-top: 0;">
+
+                <label for="soinsJournaliers" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Médicaments ou soin journaliers à donner à l'enfant :</label>
+                <textarea id="soinsJournaliers" rows="2" placeholder="Précisez..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;"></textarea>
+
+                <label for="contreIndications" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px; margin-bottom: 5px;">Existe-t-il des contre-indications médicales pour certaines activités ?</label>
+                <textarea id="contreIndications" rows="2" placeholder="Ex: Sport, natation..." style="width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-family: inherit;"></textarea>
+
+                <button type="submit" id="btnSubmitMedical" class="btn-main" style="width: 100%; margin-top: 25px;">Enregistrer et Transmettre la Fiche Médicale</button>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>CS BANZA</h4>
+                    <p>Travail-Discipline-Réussite.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="inscription.html">Inscription</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="resultats.html">Résultats</a></li>
+                        <li><a href="admis.html">Nouveaux Admis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <p>Lubumbashi, RDC</p>
+                    <p>Email:26BANZA@csbanza.cd</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CS BANZA.</p>
+            </div>
+        </footer>
+        
+        <script src="js/navigation.js"></script>
+        <script scr="js/medical.js"></script>
+    </body>
+</html>

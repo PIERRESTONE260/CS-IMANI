@@ -59,7 +59,24 @@
                     <input type="text" id="nomEleve"
                         placeholder="Nom complet de l'élève" required>
 
-                    <label for="niveau" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 10px;">Choisissez le niveau :</label>
+                    <!-- NOUVEAUX CHAMPS AJOUTÉS -->
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <select id="sexe" required style="flex: 1;">
+                            <option value="">-- Sexe --</option>
+                            <option value="M">Masculin (M)</option>
+                            <option value="F">Féminin (F)</option>
+                        </select>
+                        <div style="flex: 2; display: flex; flex-direction: column;">
+                            <label for="dateNaissance" style="font-size: 0.75rem; font-weight: 600; color: #555; margin-bottom: 2px;">Date de naissance</label>
+                            <input type="date" id="dateNaissance" required style="margin-top: 0;">
+                        </div>
+                    </div>
+
+                    <input type="text" id="lieuNaissance"
+                        placeholder="Lieu de naissance" required style="margin-top: 15px;">
+                    <!-- FIN DES NOUVEAUX CHAMPS -->
+
+                    <label for="niveau" style="font-size: 0.9rem; font-weight: 600; display: block; margin-top: 15px;">Choisissez le niveau :</label>
                     <select id="niveau" required>
                         <option value="">-- Sélectionnez le niveau --</option>
                         <option value="maternelle">Maternelle (30$)</option>
@@ -202,12 +219,15 @@
                 // Passage à l'étape 2 (ID de transaction) après vérification des champs de l'étape 1
                 btnSuivant.addEventListener("click", function() {
                     const nomEleve = document.getElementById("nomEleve").value.trim();
+                    const sexe = document.getElementById("sexe").value;
+                    const dateNaissance = document.getElementById("dateNaissance").value;
+                    const lieuNaissance = document.getElementById("lieuNaissance").value.trim();
                     const niveau = niveauSelect.value;
                     const classe = classeSelect.value;
                     const nomParent = document.getElementById("nomParent").value.trim();
                     const telephone = document.getElementById("telephone").value.trim();
 
-                    if (!nomEleve || !niveau || !classe || !nomParent || !telephone) {
+                    if (!nomEleve || !sexe || !dateNaissance || !lieuNaissance || !niveau || !classe || !nomParent || !telephone) {
                         alert("Veuillez remplir tous les champs obligatoires de l'étape 1 avant de continuer.");
                         return;
                     }
