@@ -24,7 +24,7 @@ document.getElementById('medicalForm').addEventListener('submit', function(e) {
 
     if (file) {
         var reader = new FileReader();
-        reader.onloadfunction = function(uploadEvent) {
+        reader.onload = function(uploadEvent) { // Correction ici : onload au lieu de onloadfunction
             var base64Image = uploadEvent.target.result;
             envoyerDonneesMedicales(base64Image, maladiesCochees, asthmatiqueVal);
         };
