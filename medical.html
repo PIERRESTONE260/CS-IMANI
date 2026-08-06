@@ -26,7 +26,7 @@
 
         <main class="container">
             <h2>FICHE MÉDICALE CONFIDENTIELLE</h2>
-            <p>Ce document est strictement confidentiel et destiné au suivi de santé de l'élève au sein de l'établissement.</p>
+            <p>Ce document est strictement confidentiel et destiné au suivi de santé de l'élève au sein de l'établissement[cite: 7].</p>
 
             <form id="medicalForm" enctype="multipart/form-data" style="margin-top: 20px;">
                 
@@ -42,6 +42,45 @@
                         <label for="prenom" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Prénom :</label>
                         <input type="text" id="prenom" placeholder="Prénom de l'élève" required style="margin-top: 0;">
                     </div>
+                </div>
+
+                <!-- SÉLECTION DU NIVEAU, CLASSE ET OPTION (Aligné avec l'inscription) -->
+                <div style="margin-top: 15px;">
+                    <label for="niveau" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Choisissez le niveau :</label>
+                    <select id="niveau" required style="margin-top: 0;">
+                        <option value="">-- Sélectionnez le niveau --</option>
+                        <option value="maternelle">Maternelle</option>
+                        <option value="primaire">Primaire</option>
+                        <option value="eb">Secondaire - 7è & 8è EB</option>
+                        <option value="general">Secondaire - Options Générales</option>
+                        <option value="technique">Secondaire - Options Techniques</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 15px;">
+                    <label for="classeEleve" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Choisir la classe :</label>
+                    <select id="classeEleve" required style="margin-top: 0;">
+                        <option value="">Choisir la classe d'abord</option>
+                    </select>
+                </div>
+
+                <div id="option-wrapper" style="display: none; margin-top: 15px;">
+                    <label for="optionEleve" style="font-size: 0.9rem; font-weight: 600; display: block; margin-bottom: 5px;">Choisir l'option :</label>
+                    <select id="optionEleve" style="margin-top: 0;">
+                        <option value="Aucune">Aucune / Général</option>
+                        <optgroup label="Options Générales">
+                            <option value="LITT">Littéraire (LITT)</option>
+                            <option value="SCIENCES">Scientifique (SCIENCES)</option>
+                            <option value="HP">Pédagogique (HP)</option>
+                        </optgroup>
+                        <optgroup label="Options Techniques">
+                            <option value="CG">Commerciale et Gestion (CG)</option>
+                            <option value="ELEC">Électricité (ELEC)</option>
+                            <option value="MG">Mécanique Générale (MG)</option>
+                            <option value="TCC">Coupe et Couture (TCC)</option>
+                            <option value="MA">Mécanique Automobile (MA)</option>
+                        </optgroup>
+                    </select>
                 </div>
 
                 <div style="display: flex; gap: 10px; margin-top: 15px;">
@@ -189,6 +228,38 @@
         </footer>
         
         <script src="js/navigation.js"></script>
+        <!-- Script pour dynamiser le menu déroulant des classes et options (identique à l'inscription) -->
+        <script>
+            document.getElementById('niveau').addEventListener('change', function() {
+                var niveau = this.value;
+                var classeSelect = document.getElementById('classeEleve');
+                var optionWrapper = document.getElementById('option-wrapper');
+                
+                classeSelect.innerHTML = '<option value="">-- Sélectionnez la classe --</option>';
+                optionWrapper.style.display = 'none';
+
+                var classesParNiveau = {
+                    'maternelle': ['1ère Maternelle', '2ème Maternelle', '3ème Maternelle'],
+                    'primaire': ['1ère Primaire', '2ème Primaire', '3ème Primaire', '4ème Primaire', '5ème Primaire', '6ème Primaire'],
+                    'eb': ['7ème Secondaire', '8ème Secondaire'],
+                    'general': ['1ère Secondaire', '2ème Secondaire', '3ème Secondaire', '4ème Secondaire'],
+                    'technique': ['1ère Secondaire', '2ème Secondaire', '3ème Secondaire', '4ème Secondaire']
+                };
+
+                if (classesParNiveau[niveau]) {
+                    classesParNiveau[niveau].forEach(function(classe) {
+                        var opt = document.createElement('option');
+                        opt.value = classe;
+                        opt.textContent = classe;
+                        classeSelect.appendChild(opt);
+                    });
+                }
+
+                if (niveau === 'general' || niveau === 'technique') {
+                    optionWrapper.style.display = 'block';
+                }
+            });
+        </script>
         <script src="js/medical.js"></script>
     </body>
 </html>
